@@ -4,8 +4,9 @@
 
 ## Team
 
+
   - __Product Owner__: Aimee Rosato
-  - __Scrum Master__: teamMember
+  - __Scrum Master__: Dan Molitor
   - __Development Team Members__: teamMember, teamMember
 
 ## Table of Contents
