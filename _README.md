@@ -4,10 +4,9 @@
 
 ## Team
 
-
   - __Product Owner__: Aimee Rosato
   - __Scrum Master__: Dan Molitor
-  - __Development Team Members__: Chris Patton, teamMember
+  - __Development Team Members__: Chris Patton, Michael Dziedzic
 
 ## Table of Contents
 
