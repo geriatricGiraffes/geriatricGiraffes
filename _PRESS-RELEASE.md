@@ -1,7 +1,22 @@
-# Project Name #
+HRRB Hub
 
-<!-- 
-> This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
+Like reddit for HRRB participants, with a focus on tech
+
+To combat the ephemerality of slack with persistant and organized data
+
+Right now the only method of communication current HRRB students and alumni have is Slack.  Slack is great for real-time messaging, but great technical advice and resources often get lost in a sea of giphys and emoticons - not to mention that the history only goes back a few days.  Announcements, such as excellent speakers, can get miscommunicated as well.  
+
+The HRRB Hub will be a multi-purpose app where people can post/answer questions related to specfic topics.  Users would be allowed to comment and upvote answers as well. This idea could also extend to coordinating studying sessions, communicating special events ahead of time, and connecting alumni volunteers with current students.      
+
+"This is the resource we wished we had as HRRB students." - Everyone
+
+Sign in with your Github account to start benefiting from this resource!
+
+"Before HRRB Hub, I was so bummed when I forgot to save a link to an excellent Node resource and it disappeared forever a few days later. Now I don't have to worry - I can search for all cool resources I want that have been vetting by my peers on Hub."
+
+We hope to see you on the Hub soon.
+
+<!-- This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
 
 There is an approach called "working backwards" that is widely used at Amazon. They work backwards from the customer, rather than starting with an idea for a product and trying to bolt customers onto it. While working backwards can be applied to any specific product decision, using this approach is especially important when developing new products or features.
 
@@ -15,30 +30,3 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
- 
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
-## Problem ##
-  > Describe the problem your product solves.
-
-## Solution ##
-  > Describe how your product elegantly solves the problem.
-
-## Quote from You ##
-  > A quote from a spokesperson in your company.
-
-## How to Get Started ##
-  > Describe how easy it is to get started.
-
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
