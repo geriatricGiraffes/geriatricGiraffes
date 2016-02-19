@@ -1,6 +1,9 @@
 <h2>POSTS</h1>
 
-<p>Anyone know how to use D3 with Angular?</p>
-<p>What's up with Codybot?</p>
-<p>My hovercraft is full of eels.</p>
-<p>Field trip?</p>
+<div class="posts" ng-mode="Posts">
+  <div class="post" ng-repeat="post in posts">
+    {{ post.author }}<br />
+    {{ post.title }}<br />
+    {{ post.data }}<br />
+  </div>
+</div>
