@@ -8,7 +8,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "serve"
+    "start": "gulp"
   },
   "author": "",
   "license": "ISC",
