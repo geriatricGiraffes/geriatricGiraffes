@@ -1,11 +1,17 @@
-angular.module('shortly', [
-  'shortly.services',
+angular.module('hackoverflow', [
+  'hackoverflow.services',
+  'hackoverflow.posts',
   'ngRoute',
   'ui.router'
 ])
 .config(function($routeProvider, $httpProvider, $urlRouterProvider, $stateProvider) {
-  $urlRouterProvider.otherwise('/links');
+  $urlRouterProvider.otherwise('/posts');
   $stateProvider
+    .state('posts', {
+      url: '/posts',
+      templateUrl: 'app/posts/posts.html',
+      controller: 'PostsController'
+    })
     .state('signin', {
       url: '/signin',
       templateUrl: 'app/auth/signin.html',
@@ -15,5 +21,5 @@ angular.module('shortly', [
       url: '/signup',
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
-    })
-})
+    });
+});
