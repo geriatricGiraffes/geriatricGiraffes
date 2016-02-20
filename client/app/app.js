@@ -1,10 +1,9 @@
 angular.module('hackoverflow', [
   'hackoverflow.services',
   'hackoverflow.posts',
-  'ngRoute',
   'ui.router'
 ])
-.config(function($routeProvider, $httpProvider, $urlRouterProvider, $stateProvider) {
+.config(function($httpProvider, $urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/posts');
   $stateProvider
     .state('posts', {

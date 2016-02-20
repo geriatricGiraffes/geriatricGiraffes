@@ -10,11 +10,9 @@ angular.module('hackoverflow.posts', [
   }
 
   $scope.getPosts = function getPosts() {
-    $scope.posts = Posts.getPosts();
-    // use below version with .then when db is online
-    // Posts.getPosts().then(function(data) {
-    //   $scope.posts = data;
-    // })
+    Posts.getPosts().then(function(data) {
+      $scope.posts = data.data;
+    })
   }
 
   $scope.getPosts();
