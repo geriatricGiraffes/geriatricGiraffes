@@ -1,0 +1,26 @@
+<div class="search">
+  <input ng-model="searchFor" placeholder="Search" />
+</div>
+
+<!-- {{ postId }} -->
+
+<div class="comments-post">
+  <h2>The pros and cons of two-way data binding in AngularJS and Angular2 <span class="dev">(postTitle)</span></h2>
+  <p>Webtwo ipsum dolor sit amet, eskobo chumby doostang bebo. Wakoopa bebo zillow insala wesabe hipmunk wesabe, lijit spotify voki doostang diigo etsy woopra kno, gooru chegg heroku jajah fleck lala. Klout foodzie ebay oooj skype odeo yammer udemy hulu, oooooc plickers movity greplin jabber ngmoco ifttt vimeo imeem, qeyno cuil lala jabber waze oovoo prezi. <span class="dev">(postBody)</span></p>
+  <p>Spiny Norman - 2/14/2016 <span class="dev">(postUsername, postTimeStamp)</span></p><br />
+</div>
+
+<div>
+    <div class="comment" ng-repeat="comment in comments | filter:searchFor">
+      {{ comment.userId }} <span class="dev">(commentUsername)</span><br />
+      {{ comment.body }} <span class="dev">(commentBody)</span><br /><br />
+      {{ comment.timeStamp }} <span class="dev">(commentTimeStamp)</span><br />
+    </div>
+</div>
+
+<div class="comment-form">
+  <form>
+    <textarea></textarea><br />
+    <button>Post Comment</button>
+  </form>
+</div>

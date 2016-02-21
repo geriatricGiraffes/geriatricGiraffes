@@ -1,6 +1,7 @@
 angular.module('hackoverflow', [
   'hackoverflow.services',
   'hackoverflow.posts',
+  'hackoverflow.comments',
   'ui.router'
 ])
 .config(function($httpProvider, $urlRouterProvider, $stateProvider) {
@@ -10,6 +11,11 @@ angular.module('hackoverflow', [
       url: '/posts',
       templateUrl: 'app/posts/posts.html',
       controller: 'PostsController'
+    })
+    .state('comments', {
+      url: '/posts/:id',
+      templateUrl: 'app/comments/comments.html',
+      controller: 'CommentsController'
     })
     .state('signin', {
       url: '/signin',
