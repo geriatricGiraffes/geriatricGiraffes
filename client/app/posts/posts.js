@@ -7,7 +7,7 @@ angular.module('hackoverflow.posts', [
   $scope.posts = [];
 
   $scope.getPosts = function getPosts() {
-    Posts.getPosts().then(function(data) {
+    Posts.getSamplePosts().then(function(data) {
       console.log(data.data);
       $scope.posts = data.data;
     });

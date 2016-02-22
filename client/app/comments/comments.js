@@ -9,7 +9,7 @@ angular.module('hackoverflow.comments', [
   $scope.postId = $stateParams.id;
 
   $scope.getComments = function getComments() {
-    Comments.getComments($scope.postId).then(function(data) {
+    Comments.getSampleComments($scope.postId).then(function(data) {
         console.log(data.data);
         $scope.comments = data.data;
     });
