@@ -13,11 +13,8 @@ header h1 {
   float: left;
 }
 
-.title a,
-.title a:link,
-.title a:visited,
-.title a:hover,
-.title a:active {
+.title a
+ {
   color: #3D3935;
 }
 
