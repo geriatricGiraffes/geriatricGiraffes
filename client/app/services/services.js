@@ -79,7 +79,7 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var getComment = function () {
+  var getComments = function () {
     return $http({
       method: 'GET',
       url: "database/url"
