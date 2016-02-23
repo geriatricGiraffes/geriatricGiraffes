@@ -4,6 +4,12 @@ angular.module('hackoverflow', [
   'hackoverflow.comments',
   'ui.router'
 ])
+
+.controller('AppController', function($scope) {
+
+
+})
+
 .config(function($httpProvider, $urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/posts');
   $stateProvider
