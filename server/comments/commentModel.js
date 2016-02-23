@@ -16,7 +16,10 @@ var CommentSchema = new mongoose.CommentSchema({
 		type:Date,
 		default: Date.now
 	}
-})
+});
+
+
+module.exports = mongoose.model('comments', CommentSchema);
 
 
 
