@@ -5,7 +5,6 @@ var app = express();
 // build the connection strings for heroku and localhost
 var dbUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/hackOverflow';
 
-var dbURI = 'mongodb://localhost/MongoosePM';
 
 //create the db connection
 mongoose.connect(dbURI);
