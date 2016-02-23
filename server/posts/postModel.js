@@ -13,6 +13,8 @@ var PostSchema = new mongoose.PostSchema({
  }
 });
 
+
+module.exports = mongoose.model('posts', PostSchema);
 // {
 //     "id": 0,
 //     "author": "Spiney Norman",
