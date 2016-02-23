@@ -1,6 +1,7 @@
 angular.module('hackoverflow', [
   'hackoverflow.services',
   'hackoverflow.posts',
+  'hackoverflow.add-post',
   'hackoverflow.comments',
   'ui.router'
 ])
@@ -17,6 +18,11 @@ angular.module('hackoverflow', [
       url: '/posts',
       templateUrl: 'app/posts/posts.html',
       controller: 'PostsController'
+    })
+    .state('add-post', {
+      url: '/add-post',
+      templateUrl: 'app/posts/add-post.html',
+      controller: 'AddPostController'
     })
     .state('comments', {
       url: '/posts/:id',

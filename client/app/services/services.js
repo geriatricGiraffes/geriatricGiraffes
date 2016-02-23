@@ -4,10 +4,10 @@ angular.module('hackoverflow.services', [])
 
 .factory('Posts', function($http) {
 
+  // db integration to replace sample data
+  // this method will become obsolete when
+  // db is online
   var getSamplePosts = function () {
-
-    // db integration to replace sample data
-
     return $http({
       method: 'GET',
       url: "app/services/samplePostsData.json"
@@ -17,7 +17,7 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var getPosts = function () {
+  var getPosts = function (forum) {
     return $http({
       method: 'GET',
       url: "database/url"
@@ -50,10 +50,6 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-    // Original
-    // return $http.get('app/services/samplePostsData.json').success(function(res) {
-    //  });
-
   return {
     getSamplePosts: getSamplePosts,
     getPosts: getPosts,
@@ -67,9 +63,10 @@ angular.module('hackoverflow.services', [])
 
 .factory('Comments', function($http) {
 
+  // db integration to replace sample data
+  // this method will become obsolete when
+  // db is online
   var getSampleComments = function (postId) {
-    // db integration to replace sample data
-
     return $http({
       method: 'GET',
       url: "app/services/sampleCommentsData.json"
@@ -112,16 +109,20 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-    // Original
-    // return $http.get('app/services/sampleCommentsData.json').success(function(res) {
-    // });
+  var getNumberComments(postId) {
+    // would be nice to get the # of comments for a given
+    // post, otherwise i need to calculate that for each
+    // post on the front end which would be unnecessarily
+    // time complexive.
+  }
 
   return {
     getSampleComments: getSampleComments,
     getComments: getComments,
     createComment: createComment,
     editComment: editComment,
-    deleteComment: deleteComment
+    deleteComment: deleteComment,
+    getNumberComments: getNumberComments
   };
 
 })

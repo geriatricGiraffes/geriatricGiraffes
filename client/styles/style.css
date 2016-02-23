@@ -17,96 +17,8 @@ h2 {
   padding: 0 40px;
 }
 
-header {
-  z-index: 100;
-  position: fixed;
-  height: 80px;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 5px 0 5px rgba(0, 0, 0, .2);
-}
-
-header h1 {
-  float: left;
-}
-
-header h1 a,
-header h1 a:link,
-header h1 a:visited,
-header h1 a:hover,
-header h1 a:active {
-  color: #3D3935;
-}
-
-#logo {
-  margin: 20px 10px 0 0;
-  float: left;
-}
-
-nav {
-  float: right;
-  margin: 30px 0 0 0;
-  font-weight: 600;
-}
-
-nav a {
-  margin-left: 20px;
-}
-
 #main {
   margin-top: 120px;
-}
-
-.posts {
-  float: left;
-  width: 65%;
-  padding: 20px;
-  margin: 0 0 20px 0;
-  background-color: #f5f5f5;
-}
-
-.posts h2 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 28px;
-}
-
-.posts p {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: #bbb;
-}
-
-.num-comments {
-  float: right;
-  font-weight: 600;
-}
-
-.sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 25%;
-  margin: 0;
-  float: right;
-  text-align: right;
-}
-
-.sidebar p {
-  margin: 0;
-  font-weight: 400;
-}
-
-.selected {
-  color: #83c1e0;
-}
-
-#posts-container {
-  position: relative;
 }
 
 a,
@@ -121,11 +33,6 @@ a:active {
   color: #83c1e0;
 }
 
-h1:hover,
-h1:active {
-  color: #3D3935;
-}
-
 .search input {
   width: 150px;
   margin: 0 0 30px 0;
@@ -135,72 +42,20 @@ h1:active {
   text-align: right;
 }
 
-.comments-search {
-  float: right;
-}
-
-.forum {
-  margin: 0 0 30px 0;
-  font-size: 30px;
-  font-weight: 300;
-  color: #83c1e0;
-}
-
-
-
-#comments-container {
-}
-
-.comments-post {
-  padding: 0 20px;
-}
-
-.comments-post h2 {
-  margin: 0;
-  font-size: 30px;
-}
-.comments-post  {
-  font-size: 18px;
-  font-weight: 300;
-}
-
-.comments-post .info,
-.comment .info  {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: #bbb;
-}
-
-
-
-.comment {
-  margin: 0 0 20px 0;
-  padding: 20px 40px 30px 40px;
-  background-color: #f5f5f5;
-  font-size: 18px;
-  font-weight: 300;
-}
-
-.comment-form {
-  max-width: 70%;
-}
-
-form {
-  padding: 0;
-  margin: 40px 0 0 0;
-}
-
-textarea {
-  width: 100%;
-  height: 80px;
-  padding: 20px 40px 30px 40px;
-  /*background-color: #eee;*/
-  border: 1px #ccc solid;
-  font-size: 16px;
-  font-weight: 300;
-}
-
 button {
-  margin: 10px 0 50px 40px;
+  display: inline-block;
+  margin: 14px 0 50px 40px;
+  padding: 15px 32px;
+  background-color: #83c1e0;
+  border: none;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
