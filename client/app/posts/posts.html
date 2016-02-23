@@ -1,51 +1,52 @@
-<div class="search">
-  <input ng-model="searchFor" placeholder="Search" />
-</div>
 
-<br />
-
-<div id="ask-question">
-  Ask a Question
-</div>
-
-<br /><br />
 
 <div id="posts-container">
-    <div class="posts" ng-repeat="post in posts | filter:searchFor">
-      <a href="#/posts/{{ post.id }}">
-        <h2>{{ post.title }} <span class="dev">(postTitle)</span></h2></a>
-        <p>{{ post.author }}  - {{ post.created }} - 45 Comments <span class="dev">(postUsername, postTimeStamp)</span></p>
 
+  <div class="posts" ng-repeat="post in posts | filter:searchFor">
+    <a href="#/posts/{{ post.id }}">
+      <h2>{{ post.title }}</h2></a>
+      <p>{{ post.author }}  - {{ post.created }} <span class="num-comments">45 Comments</span></p>
+  </div>
+
+  <div class="sidebar">
+    <div class="search">
+      <input ng-model="searchFor" placeholder="Search" />
     </div>
 
-  <div id="topics">
-    <p>Angular</p>
-    <p>Backbone</p>
-    <p>GIT</p>
-    <p>Floobits</p>
-    <p>REST</p>
-    <p>NodeJS</p>
-    <p>Self Assessments</p>
-    <p>React</p>
-    <p>Redux</p>
-    <p>Algorithms</p>
-    <p>Databases</p>
-    <p>MVC</p>
-    <p>Underscore</p>
-    <p>Functional Programming</p>
-    <p>UNIX</p>
-    <p>Heroku</p>
-    <p>JavaScript</p>
-    <p>HTML/CSS</p>
-    <p>Toy Problems</p>
-    <p>Self Assessments</p>
-    <p>MVC</p>
-    <p>Underscore</p>
-    <p>UNIX</p>
-    <p>Heroku</p>
-    <p>JavaScript</p>
-    <p>HTML/CSS</p>
-    <p>Toy Problems</p>
-    <p>Self Assessments</p>
+    <br />
+
+    <div class="forum">
+      JavaScript
+    </div>
+
+
+    <p><a>Angular</a></p>
+    <p><a>Backbone</a></p>
+    <p><a>GIT</a></p>
+    <p><a>Floobits</a></p>
+    <p><a>REST</a></p>
+    <p><a>NodeJS</a></p>
+    <p><a>Self Assessments</a></p>
+    <p><a>React</a></p>
+    <p><a>Redux</a></p>
+    <p><a>Algorithms</a></p>
+    <p><a>Databases</a></p>
+    <p><a>MVC</a></p>
+    <p><a>Underscore</a></p>
+    <p><a>Functional Programming</a></p>
+    <p><a>UNIX</a></p>
+    <p><a>Heroku</a></p>
+    <p><a>JavaScript</a></p>
+    <p><a>HTML/CSS</a></p>
+    <p><a>Toy Problems</a></p>
+    <p><a>Self Assessments</a></p>
+    <p><a>MVC</a></p>
+    <p><a>Underscore</a></p>
+    <p><a>UNIX</a></p>
+    <p><a>Heroku</a></p>
+    <p><a>JavaScript</a></p>
+    <p><a>HTML/CSS</a></p>
+    <p><a>Toy Problems</a></p>
+    <p><a>Self Assessments</a></p>
   </div>
 </div>
