@@ -202,5 +202,22 @@ textarea {
 }
 
 button {
-  margin: 10px 0 50px 40px;
+  background-color: #83c1e0;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+button {
+  margin: 14px 0 50px 40px;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
