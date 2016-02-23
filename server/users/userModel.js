@@ -7,3 +7,5 @@ var UserSchema = new mongoose.UserSchema({
   photoUrl: String,
   created: Date
 });
+
+module.exports = mongoose.model('users', UserSchema);
