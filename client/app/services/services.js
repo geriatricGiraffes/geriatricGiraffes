@@ -43,7 +43,7 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var deletePost = function () {
+  var deletePost = function (postId) {
     return $http({
       method: 'DELETE',
       url: "database/url/postId",
