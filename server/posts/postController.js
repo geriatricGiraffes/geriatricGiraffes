@@ -1,0 +1,1 @@
+var Post = require('./postModel.js');
