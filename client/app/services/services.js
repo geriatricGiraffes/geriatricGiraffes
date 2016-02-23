@@ -109,7 +109,7 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var getNumberComments(postId) {
+  var getNumberComments = function(postId) {
     // would be nice to get the # of comments for a given
     // post, otherwise i need to calculate that for each
     // post on the front end which would be unnecessarily
