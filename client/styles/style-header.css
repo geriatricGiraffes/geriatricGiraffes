@@ -1,0 +1,37 @@
+header {
+  z-index: 100;
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 5px 0 5px rgba(0, 0, 0, .2);
+}
+
+header h1 {
+  float: left;
+}
+
+.title a,
+.title a:link,
+.title a:visited,
+.title a:hover,
+.title a:active {
+  color: #3D3935;
+}
+
+#logo {
+  float: left;
+  margin: 20px 10px 0 0;
+}
+
+nav {
+  float: right;
+  margin: 30px 0 0 0;
+  font-weight: 600;
+}
+
+nav a {
+  margin-left: 20px;
+}
