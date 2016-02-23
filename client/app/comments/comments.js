@@ -10,9 +10,14 @@ angular.module('hackoverflow.comments', [
 
   $scope.getComments = function getComments() {
     Comments.getSampleComments($scope.postId).then(function(data) {
-        console.log(data.data);
+        // console.log(data.data);
         $scope.comments = data.data;
     });
+  };
+
+  $scope.deleteComment = function deleteComment(commentId) {
+    Comments.deleteComment(commentId);
+    $scope.getComments();
   };
 
   $scope.getComments();

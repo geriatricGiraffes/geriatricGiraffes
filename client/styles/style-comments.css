@@ -42,3 +42,10 @@
   font-size: 16px;
   font-weight: 300;
 }
+
+.edit-delete {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  color: #f00;
+}

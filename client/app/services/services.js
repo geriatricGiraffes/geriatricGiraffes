@@ -102,10 +102,10 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var deleteComment = function () {
+  var deleteComment = function (commentId) {
     return $http({
       method: 'DELETE',
-      url: "database/url/commentId",
+      url: "database/url/commentId"
     });
   };
 
