@@ -1,23 +1,29 @@
-
-
 <div id="add-post-container">
 
-<form>
-  <div class="add-post">
+  <form name="addPostForm"
+        ng-submit="submit()">
+    <div class="add-post">
 
-    <input class="boxsizingBorder" placeholder="Ask your question" />
-    <textarea class="boxsizingBorder" placeholder="Feel free to elaborate"></textarea>
-    <select>
-      <option selected="selected">Please choose a forum</option>
-      <option>JavaScript</option>
-      <option>NodeJS</option>
-      <option>Angular</option>
-      <option>Backbone</option>
-      <option>Functional Programming</option>
-    </select>
-    <button>Ask a Quesiton</button>
-  </div>
-</form>
+      <input    ng-model="title"
+                class="boxsizingBorder"
+                required
+                placeholder="Ask your question" />
+      <textarea ng-model="body"
+                class="boxsizingBorder"
+                required
+                placeholder="Feel free to elaborate"></textarea>
 
+      <select ng-model="forum"
+              ng-init="somethingHere = options[0]"
+              ng-options="forum for forum in forums"></select>
+
+      <button type="submit"
+              ng-disabled="addPostForm.$invalid"
+              ng-Class="(title && body && forum !== 'Please choose a forum') ?
+                'buttonEnabled' : 'buttonDisabled'">
+        Ask a Quesiton</button>
+
+    </div>
+  </form>
 
 </div>
