@@ -2,7 +2,7 @@ angular.module('hackoverflow.services', [])
 
 // POSTS
 
-.factory('Posts', function($http) {
+.factory('Posts', function ( $http ) {
 
   // db integration to replace sample data
   // this method will become obsolete when
@@ -12,7 +12,7 @@ angular.module('hackoverflow.services', [])
       method: 'GET',
       url: "app/services/samplePostsData.json"
     })
-    .then(function(response){
+    .then(function ( response ){
       return response;
     });
   };
@@ -20,17 +20,17 @@ angular.module('hackoverflow.services', [])
   var getPosts = function (forum) {
     return $http({
       method: 'GET',
-      url: "database/url"
+      url: "/api/posts"
     })
-    .then(function(response){
+    .then(function ( response ){
       return response;
       });
     };
 
-  var createPost = function (post) {
+  var createPost = function ( post ) {
     return $http({
       method: 'POST',
-      url: "database/url",
+      url: "/api/posts",
       data: post
     });
     };
@@ -38,7 +38,7 @@ angular.module('hackoverflow.services', [])
   var editPost = function ( postId ) {
     return $http({
       method: 'PUT',
-      url: "database/url/postId",
+      url: "/api/posts/" + postId,
       data: post
     });
   };
@@ -46,7 +46,7 @@ angular.module('hackoverflow.services', [])
   var deletePost = function (postId) {
     return $http({
       method: 'DELETE',
-      url: "database/url/postId",
+      url: "/api/posts/postId",
     });
   };
 
@@ -61,17 +61,19 @@ angular.module('hackoverflow.services', [])
 
 // COMMENTS
 
-.factory('Comments', function($http) {
+.factory('Comments', function ( $http ) {
 
   // db integration to replace sample data
   // this method will become obsolete when
   // db is online
-  var getSampleComments = function (postId) {
+
+  var getSampleComments = function ( postId ) {
+    // db integration to replace sample data
     return $http({
       method: 'GET',
       url: "app/services/sampleCommentsData.json"
     })
-    .then(function(response){
+    .then(function ( response ) {
       return response;
     });
   };
@@ -79,9 +81,9 @@ angular.module('hackoverflow.services', [])
   var getComments = function () {
     return $http({
       method: 'GET',
-      url: "database/url"
+      url: "/api/comments"
     })
-    .then(function(response){
+    .then(function ( response ) {
       return response;
       });
     };
@@ -89,7 +91,7 @@ angular.module('hackoverflow.services', [])
   var createComment = function ( comment ) {
     return $http({
       method: 'POST',
-      url: "database/url",
+      url: "/api/comments",
       data: comment
     });
     };
@@ -97,7 +99,7 @@ angular.module('hackoverflow.services', [])
   var editComment = function ( commentId ) {
     return $http({
       method: 'PUT',
-      url: "database/url",
+      url: "/api/comments/" + commentId,
       data: comment
     });
   };
@@ -105,7 +107,7 @@ angular.module('hackoverflow.services', [])
   var deleteComment = function (commentId) {
     return $http({
       method: 'DELETE',
-      url: "database/url/commentId"
+      url: "/api/comments/commentId",
     });
   };
 
@@ -114,7 +116,7 @@ angular.module('hackoverflow.services', [])
     // post, otherwise i need to calculate that for each
     // post on the front end which would be unnecessarily
     // time complexive.
-  }
+  };
 
   return {
     getSampleComments: getSampleComments,
@@ -129,15 +131,15 @@ angular.module('hackoverflow.services', [])
 
 // AUTHENTICATION FACTORY ADDED
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ( $http, $location, $window ) {
 
   var signin = function ( user ) {
     return $http ({
       method: 'POST',
-      url: 'someroute/signin',
+      url: "/api/users/signin",
       data: user
     })
-    .then(function (response) {
+    .then(function ( response ) {
       return response.data.token;
     });
   };
@@ -145,10 +147,10 @@ angular.module('hackoverflow.services', [])
   var signup = function ( user ) {
     return $http({
       method: 'POST',
-      url: 'someroute/signup',
+      url: "/api/users/signup",
       data: user
     })
-    .then(function(response){
+    .then(function ( response ) {
       return response.data.token;
     });
   };
