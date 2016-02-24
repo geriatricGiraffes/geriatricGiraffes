@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var CommentSchema = new mongoose.Schema({ 
+var CommentSchema = new mongoose.Schema({
 	post: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Post'
@@ -18,6 +18,3 @@ var CommentSchema = new mongoose.Schema({
 
 
 module.exports = mongoose.model('Comment', CommentSchema);
-
-
-rebas
