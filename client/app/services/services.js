@@ -2,7 +2,7 @@ angular.module('hackoverflow.services', [])
 
 // POSTS
 
-.factory('Posts', function ( $http ) {
+.factory('Posts', function($http) {
 
   // db integration to replace sample data
   // this method will become obsolete when
@@ -35,7 +35,7 @@ angular.module('hackoverflow.services', [])
   var getPosts = function(forum) {
     return $http({
       method: 'GET',
-      url: "/api/posts"
+      url: '/api/posts'
     })
     .then(function ( response ){
       return response;
@@ -45,7 +45,7 @@ angular.module('hackoverflow.services', [])
   var createPost = function(title, body, forum) {
     return $http({
       method: 'POST',
-      url: "/api/posts",
+      url: '/api/posts',
       data: {
         title: title,
         body: body,
@@ -57,7 +57,7 @@ angular.module('hackoverflow.services', [])
   var editPost = function(postId) {
     return $http({
       method: 'PUT',
-      url: "/api/posts/" + postId,
+      url: '/api/posts/' + postId,
       data: post
     });
   };
@@ -65,7 +65,7 @@ angular.module('hackoverflow.services', [])
   var deletePost = function(postId) {
     return $http({
       method: 'DELETE',
-      url: "/api/posts/postId",
+      url: '/api/posts/postId'
     });
   };
 
@@ -101,7 +101,7 @@ angular.module('hackoverflow.services', [])
   var getComments = function() {
     return $http({
       method: 'GET',
-      url: "/api/comments"
+      url: '/api/comments'
     })
     .then(function(response) {
       return response;
@@ -111,7 +111,7 @@ angular.module('hackoverflow.services', [])
   var createComment = function(comment) {
     return $http({
       method: 'POST',
-      url: "/api/comments",
+      url: '/api/comments',
       data: comment
     });
     };
@@ -119,7 +119,7 @@ angular.module('hackoverflow.services', [])
   var editComment = function(commentId) {
     return $http({
       method: 'PUT',
-      url: "/api/comments/" + commentId,
+      url: '/api/comments/' + commentId,
       data: comment
     });
   };
@@ -127,7 +127,7 @@ angular.module('hackoverflow.services', [])
   var deleteComment = function(commentId) {
     return $http({
       method: 'DELETE',
-      url: "/api/comments/commentId",
+      url: '/api/comments/commentId'
     });
   };
 
@@ -156,7 +156,7 @@ angular.module('hackoverflow.services', [])
   var signin = function(user) {
     return $http ({
       method: 'POST',
-      url: "/api/users/signin",
+      url: '/api/users/signin',
       data: user
     })
     .then(function(response) {
@@ -167,7 +167,7 @@ angular.module('hackoverflow.services', [])
   var signup = function(user) {
     return $http({
       method: 'POST',
-      url: "/api/users/signup",
+      url: '/api/users/signup',
       data: user
     })
     .then(function ( response ) {
