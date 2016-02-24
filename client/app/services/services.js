@@ -2,56 +2,76 @@ angular.module('hackoverflow.services', [])
 
 // POSTS
 
-.factory('Posts', function ( $http ) {
+.factory('Posts', function($http) {
 
   // db integration to replace sample data
   // this method will become obsolete when
   // db is online
-  var getSamplePosts = function () {
+  // TODO: remove getSamplePosts when db online
+  var getSamplePosts = function() {
     return $http({
       method: 'GET',
-      url: "app/services/samplePostsData.json"
+      url: 'app/services/samplePostsData.json'
+    })
+    .then(function(response){
+      return response;
+    });
+  };
+
+  // db integration to replace sample data
+  // this method will become obsolete when
+  // db is online
+  // TODO: remove getSampleForums when db online
+  var getSampleForums = function() {
+    return $http({
+      method: 'GET',
+      url: 'app/services/sampleForumData.json'
     })
     .then(function ( response ){
       return response;
     });
   };
 
-  var getPosts = function (forum) {
+  var getPosts = function(forum) {
     return $http({
       method: 'GET',
-      url: "/api/posts"
+      url: '/api/posts'
     })
     .then(function ( response ){
       return response;
       });
     };
 
-  var createPost = function ( post ) {
+  var createPost = function(title, body, forum) {
     return $http({
       method: 'POST',
-      url: "/api/posts",
-      data: post
+      url: '/api/posts',
+      data: {
+        title: title,
+        body: body,
+        forum: forum
+      }
     });
-    };
+  };
 
-  var editPost = function ( postId ) {
+  var editPost = function(postId) {
     return $http({
       method: 'PUT',
-      url: "/api/posts/" + postId,
+      url: '/api/posts/' + postId,
       data: post
     });
   };
 
-  var deletePost = function (postId) {
+  var deletePost = function(postId) {
     return $http({
       method: 'DELETE',
-      url: "/api/posts/postId",
+      url: '/api/posts/postId'
     });
   };
 
   return {
     getSamplePosts: getSamplePosts,
+    getSampleForums: getSampleForums,
     getPosts: getPosts,
     createPost: createPost,
     editPost: editPost,
@@ -66,48 +86,48 @@ angular.module('hackoverflow.services', [])
   // db integration to replace sample data
   // this method will become obsolete when
   // db is online
-
-  var getSampleComments = function ( postId ) {
+  // TODO: remove getSampleComments when db online
+  var getSampleComments = function(postId) {
     // db integration to replace sample data
     return $http({
       method: 'GET',
-      url: "app/services/sampleCommentsData.json"
+      url: 'app/services/sampleCommentsData.json'
     })
-    .then(function ( response ) {
+    .then(function(response) {
       return response;
     });
   };
 
-  var getComments = function () {
+  var getComments = function() {
     return $http({
       method: 'GET',
-      url: "/api/comments"
+      url: '/api/comments'
     })
-    .then(function ( response ) {
+    .then(function(response) {
       return response;
       });
     };
 
-  var createComment = function ( comment ) {
+  var createComment = function(comment) {
     return $http({
       method: 'POST',
-      url: "/api/comments",
+      url: '/api/comments',
       data: comment
     });
     };
 
-  var editComment = function ( commentId ) {
+  var editComment = function(commentId) {
     return $http({
       method: 'PUT',
-      url: "/api/comments/" + commentId,
+      url: '/api/comments/' + commentId,
       data: comment
     });
   };
 
-  var deleteComment = function (commentId) {
+  var deleteComment = function(commentId) {
     return $http({
       method: 'DELETE',
-      url: "/api/comments/commentId",
+      url: '/api/comments/commentId'
     });
   };
 
@@ -131,23 +151,23 @@ angular.module('hackoverflow.services', [])
 
 // AUTHENTICATION FACTORY ADDED
 
-.factory('Auth', function ( $http, $location, $window ) {
+.factory('Auth', function($http, $location, $window) {
 
-  var signin = function ( user ) {
+  var signin = function(user) {
     return $http ({
       method: 'POST',
-      url: "/api/users/signin",
+      url: '/api/users/signin',
       data: user
     })
-    .then(function ( response ) {
+    .then(function(response) {
       return response.data.token;
     });
   };
 
-  var signup = function ( user ) {
+  var signup = function(user) {
     return $http({
       method: 'POST',
-      url: "/api/users/signup",
+      url: '/api/users/signup',
       data: user
     })
     .then(function ( response ) {
@@ -155,11 +175,11 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var isAuth = function () {
+  var isAuth = function() {
     return !!$window.localStorage.getItem('someToken');
   };
 
-  var signout = function () {
+  var signout = function() {
     $window.localStorage.removeItem('someToken');
     $location.path('/signin');
   };
@@ -171,4 +191,30 @@ angular.module('hackoverflow.services', [])
     signout: signout
   };
 
+})
+
+.factory('LaundryService', function() {
+
+  // used by post and comment forms to escape any
+  // malicious-looking characters
+  var cleanText = function(text) {
+    text = text || '';
+    var textArray = text.split('');
+    var badChars = ['<', '>', '&', '"', "'", '!', '@',
+                    '$', '%', '(', ')', '=', '+', '{', '}',
+                    '[', ']', '-'];
+
+    for (var i = 0; i < badChars.length; i++) {
+      for (var j = 0; j < textArray.length; j++) {
+        if (textArray[j] === badChars[i]) {
+          textArray[j] = '&#' + textArray[j].charCodeAt(0) + ';';
+        }
+      }
+    }
+    return textArray.join('');
+  };
+
+  return {
+    cleanText: cleanText
+  };
 });

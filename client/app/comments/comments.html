@@ -8,7 +8,7 @@
 
     <!-- TODO: need to get post's forum from db  -->
     <span class="post-forum">Angular /</span>
-    
+
     <h2>{{ post.postTitle }}</h2>
     <p>{{ post.postBody }}</p>
 
@@ -35,9 +35,19 @@
   </div>
 
   <div class="comment-form">
-    <form>
-      <textarea class="boxsizingBorder"></textarea><br />
-      <button>Post Comment</button>
+    <form name="addCommentForm"
+          ng-submit="submit()">
+
+        <textarea ng-model="newCommentBody"
+                  class="boxsizingBorder"
+                  required
+                  placeholder="The floor is yours."></textarea>
+
+        <button type="submit"
+                ng-disabled="addCommentForm.$invalid"
+                ng-Class="(newCommentBody) ? 'buttonEnabled' : 'buttonDisabled'">
+          Post a Comment</button>
+
     </form>
   </div>
 </div>
