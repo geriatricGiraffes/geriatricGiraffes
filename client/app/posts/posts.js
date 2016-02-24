@@ -9,6 +9,8 @@ angular.module('hackoverflow.posts', [
 .controller('PostsController', function($scope, $stateParams, $state, Posts) {
 
   $scope.posts = [];
+  $scope.forums = [];
+  $scope.forum = 'Angular';
 
   $scope.getPosts = function getPosts() {
     Posts.getSamplePosts().then(function(data) {
@@ -17,5 +19,18 @@ angular.module('hackoverflow.posts', [
     });
   };
 
+  $scope.getForums = function getForums(forum) {
+    Posts.getSampleForums(forum).then(function(data) {
+      $scope.forums = data.data.sort();
+    });
+  };
+
+  $scope.switchForum = function switchForum(forum) {
+    console.log('forum: ', forum);
+    $scope.forum = forum;
+    $scope.getForums(forum);
+  };
+
   $scope.getPosts();
+  $scope.getForums();
 });
