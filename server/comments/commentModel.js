@@ -10,7 +10,7 @@ var CommentSchema = new mongoose.Schema({
 		ref: 'User'
 	},
 	body: String,
-	timeStamp: {
+	created: {
 		type:Date,
 		default: Date.now
 	}
