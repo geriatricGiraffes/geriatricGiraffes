@@ -27,7 +27,7 @@ angular.module('hackoverflow.add-post', [
     $scope.title = LaundryService.cleanText($scope.title);
     $scope.body = LaundryService.cleanText($scope.body);
 
-    Posts.createPost($scope.title, $scope.body, $scope.forum);
+    Posts.createPost($scope.title, $scope.body, $scope.forum, 'Anonymous', new Date());
     $state.go('posts');
   };
 

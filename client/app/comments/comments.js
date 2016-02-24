@@ -39,7 +39,7 @@ angular.module('hackoverflow.comments', [
     // before sending newCommentBody off to the db, escape
     // any potentially malicious characters
     $scope.newCommentBody = LaundryService.cleanText($scope.newCommentBody);
-    Comments.createComment($scope.newCommentBody);
+    Comments.createComment($scope.post.postId, $scope.newCommentBody, 'Anonymous', new Date());
     $scope.newCommentBody = '';
   };
 

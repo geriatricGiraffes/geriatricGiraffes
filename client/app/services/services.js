@@ -42,15 +42,19 @@ angular.module('hackoverflow.services', [])
       });
     };
 
-  var createPost = function(title, body, forum) {
+  var createPost = function(title, body, forum, author, created) {
+    var newPost = {
+      title: title,
+      body: body,
+      forum: forum,
+      author: author,
+      created: created
+    };
+    console.log(newPost);
     return $http({
       method: 'POST',
       url: '/api/posts',
-      data: {
-        title: title,
-        body: body,
-        forum: forum
-      }
+      data: newPost
     });
   };
 
@@ -98,7 +102,7 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var getComments = function() {
+  var getComments = function(postId) {
     return $http({
       method: 'GET',
       url: '/api/comments'
@@ -108,13 +112,20 @@ angular.module('hackoverflow.services', [])
       });
     };
 
-  var createComment = function(comment) {
+  var createComment = function(postId, body, author, created) {
+    var newComment = {
+      postId: postId,
+      body: body,
+      author: author,
+      created: created
+    };
+    console.log(newComment);
     return $http({
       method: 'POST',
       url: '/api/comments',
-      data: comment
+      data: newComment
     });
-    };
+  };
 
   var editComment = function(commentId) {
     return $http({
