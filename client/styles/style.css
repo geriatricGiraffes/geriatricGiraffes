@@ -54,6 +54,15 @@ button {
   text-decoration: none;
 }
 
+.buttonEnabled {
+  opacity: 1.0;
+  cursor: pointer;
+}
+.buttonDisabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
 .boxsizingBorder {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
