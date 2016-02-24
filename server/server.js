@@ -4,6 +4,33 @@ var app = express();
 
 // mongoose.connect('mongodb://localhost/hackoverflow'); //connect to mongo database
 
+var dbUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/hackoverflow';
+
+var dbURI = 'mongodb://localhost/MongoosePM';
+
+mongoose.connect(dbURI);
+
+/* ===============================================
+   DB Event Handlers
+    ===============================================
+ */
+
+ // logs a connection
+ mongoose.connection.on('connected', function() {
+   console.log('Mongoose connected to ' + dbURI);
+ });
+ // logs when disconnected
+ mongoose.connection.on('disconnected', function() {
+   console.log('Mongoose disconnected');
+ });
+
+ // logs when user terminates app
+ process.on('SIGINIT', function() {
+   mongoose.connection.close(function() {
+     console.log('Mongoose disconnected through app termination');
+     process.exit(0);
+   });
+ });
 
 // configure our server with all the middleware and routing
 
