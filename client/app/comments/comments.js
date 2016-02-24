@@ -1,18 +1,35 @@
 angular.module('hackoverflow.comments', [
-  'hackoverflow.services'
+  'hackoverflow.services',
+  'ui.router'
 ])
 
-.controller('CommentsController', function($scope, $stateParams, Comments) {
+.config(function($httpProvider, $urlRouterProvider, $stateProvider) {
+})
+
+.controller('CommentsController',
+  function($scope, $rootScope, $stateParams, $state, Comments, Posts) {
 
   $scope.comments = [];
-
-  $scope.postId = $stateParams.id;
+  $scope.post = $stateParams.post;
 
   $scope.getComments = function getComments() {
     Comments.getSampleComments($scope.postId).then(function(data) {
-        console.log(data.data);
-        $scope.comments = data.data;
+      $scope.comments = data.data;
     });
+  };
+
+  $scope.deleteComment = function deleteComment(commentId) {
+    Comments.deleteComment(commentId);
+    $scope.getComments();
+  };
+
+  $scope.editPost = function editPost(postId) {
+    console.log('edit post', postId);
+  };
+
+  $scope.deletePost = function deletePost(postId) {
+    Posts.deletePost(postId);
+    $state.go('posts');
   };
 
   $scope.getComments();

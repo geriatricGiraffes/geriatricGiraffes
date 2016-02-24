@@ -3,12 +3,15 @@ angular.module('hackoverflow', [
   'hackoverflow.posts',
   'hackoverflow.add-post',
   'hackoverflow.comments',
-  'ui.router'
+  'ui.router',
+  'ngRoute'
 ])
 
-.controller('AppController', function($scope) {
+.controller('AppController', function($scope, $location) {
 
-
+  // this ensures that application fully reboots and
+  // defaults to main page if user reloads a page. 
+  $location.path("/");
 })
 
 .config(function($httpProvider, $urlRouterProvider, $stateProvider) {
@@ -25,7 +28,8 @@ angular.module('hackoverflow', [
       controller: 'AddPostController'
     })
     .state('comments', {
-      url: '/posts/:id',
+      params: {'post': null},
+      url: '/comments',
       templateUrl: 'app/comments/comments.html',
       controller: 'CommentsController'
     })
