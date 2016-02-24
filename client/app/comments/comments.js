@@ -7,10 +7,10 @@ angular.module('hackoverflow.comments', [
 })
 
 .controller('CommentsController',
-  function($scope, $stateParams, $state, Comments, Posts) {
+  function($scope, $rootScope, $stateParams, $state, Comments, Posts) {
 
   $scope.comments = [];
-  $scope.postId = $stateParams.id;
+  $scope.post = $stateParams.post;
 
   $scope.getComments = function getComments() {
     Comments.getSampleComments($scope.postId).then(function(data) {

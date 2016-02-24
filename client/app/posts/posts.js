@@ -1,8 +1,12 @@
 angular.module('hackoverflow.posts', [
-  'hackoverflow.services'
+  'hackoverflow.services',
+  'ui.router'
 ])
 
-.controller('PostsController', function($scope, Posts) {
+.config(function($httpProvider, $urlRouterProvider, $stateProvider) {
+})
+
+.controller('PostsController', function($scope, $stateParams, $state, Posts) {
 
   $scope.posts = [];
 
