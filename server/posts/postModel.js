@@ -6,6 +6,7 @@ var PostSchema = new mongoose.Schema({
  	ref : 'User',
  }, 
  title: String,
+ body: String,
  created: {
  	type: Date,
  	Default: Date.now
