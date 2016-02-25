@@ -1,27 +1,54 @@
-<<<<<<< 247fd960dab112474e8a48672ca73f4a51dbca83
+
+var Post       = require('../posts/postModel.js');
+var Comment    = require('./commentModel.js')
+
 module.exports = {
 
-  getComments : function ( request, response, next ) {
-    Post.comments.find(function(err, lesComments){
-      if (err) {
-        return response.send(err);
-      }
+  // getComments : function ( request, response, next ) {
+  //   Post.comments.find(function(err, lesComments){
+  //     if (err) {
+  //       return response.send(err);
+  //     }
 
-      response.json(lesComments);
-    });
+  //     response.json(lesComments);
+  //   });
 
-  },
-  newComment : function ( request, response, next ) {
-    var comment = new Post.comments.push(request.body);
+  // },
+  
+  newComment : function(req, res, next) {
+   var comment = new Comment();
+   comment.post = req.post;
+   comment.author = 'anonymous';
+   comment.body = req.body.body;
+   comment.save(function(err, comment) {
+     if (err) { return next(err); }
+    
+     req.post.comments.push(comment);
+     req.post.save(function(err, post) {
+       if (err) { return next(err); }
+      
+       res.json(comment);
+     });
+   });
+ }
+ 
 
-    comment.save(function(err) {
-      if (err) {
-        return response.send(err);
-      }
 
-      response.send({ message: 'Post added!'});
-    });
-  }
+
+
+
+
+  //function ( request, response, next ) {
+  //   var comment = new Post.comments.push(request.body);
+
+  //   comment.save(function(err) {
+  //     if (err) {
+  //       return response.send(err);
+  //     }
+
+  //     response.send({ message: 'Post added!'});
+  //   });
+  // }
 
   // deleteComment : function ( request, response ) {
   //   Post.comments.comment.remove({
@@ -35,5 +62,4 @@ module.exports = {
   //   }
 
 };
-=======
->>>>>>> rebasing
+
