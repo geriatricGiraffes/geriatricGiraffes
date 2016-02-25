@@ -1,30 +1,27 @@
+// app/models/post.js
+
+
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({
- author:{
- 	type: mongoose.Schema.Types.ObjectId,
- 	ref : 'User',
- },
- title: String,
- body: String,
- forum: String,
- created: {
- 	type: Date,
- 	Default: Date.now
- },
- comments: [
-    {
-      author:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref : 'User',
-      },
-      body: String,
-      created: {
-        type: Date,
-        Default: Date.now
-      }
-    }
-  ]
-});
+	form:String,
+	name: String,
+	title: String,
+	body: String,
+	created: {
+		type: Date,
+		default: Date.now
+	},
+	comments: [{ 
+		author: String,
+		body:String,
+		created: {
+			type: Date,
+			default: Date.now
+		}
 
+	}]  // The ref option is what tells Mongoose which model to use during population
+});
 module.exports = mongoose.model('Post', PostSchema);
+
+

@@ -1,20 +1,9 @@
 var mongoose = require('mongoose');
 
 var CommentSchema = new mongoose.Schema({
-	post: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Post'
-	},
-	author: {
-		type:mongoose.Schema.Types.ObjectId,
-		ref: 'User'
-	},
 	body: String,
-	created: {
-		type:Date,
-		default: Date.now
-	}
+	author: String,
+	post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post'}  // The ref option is what tells Mongoose which model to use during population.
 });
-
 
 module.exports = mongoose.model('Comment', CommentSchema);
