@@ -13,8 +13,8 @@ module.exports = function ( app, express ) {
   app.use(express.static(__dirname + '../../client'));
 
   app.use('/api/users', userRouter); // use userRouter for all user requests
-  app.use('/api/posts', postRouter); // use postRouter for all user post requests
-  app.use('/api/posts/comments', commentRouter); // use commentRouter for all use comment requests
+  app.use('/api/post', postRouter); // use postRouter for all user post requests
+  app.use('/api/post/comments', commentRouter); // use commentRouter for all use comment requests
 
   // authentication middleware used to decode token and made available on the request
 // app.use('someroute/someroute', helpers.decode);
