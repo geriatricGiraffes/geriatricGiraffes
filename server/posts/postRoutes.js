@@ -1,9 +1,25 @@
 var postController = require('./postController.js');
+var Post       = require('./postModel.js');
+var Comment    = require('../comments/commentModel.js')
+
 
 module.exports = function ( app ) {
+// Map logic to route parameter 'comment'
+app.param('comment', function (req, res, next, id) {
+	var query = Comment.findById(id);
+	
+	query.exec(function (err, comment) {
+		if (err) { return next(err); }
+		if (!comment) { return next(new Error("can't find comment")); }
+		
+		req.comment = comment;
+		return next();
+	});
+});
   // app === postRouter injected from middleware.js
     app.get('/', postController.getPosts);
     app.post('/', postController.newPost);
-    app.put('/:id', postController.editPost);
-    app.delete('/:id', postController.deletePost);
+    app.get('/:post', postController.getPost);
+    //app.put('/:id', postController.editPost);
+    app.delete('/:post', postController.deletePost);
 };
