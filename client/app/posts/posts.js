@@ -13,7 +13,8 @@ angular.module('hackoverflow.posts', [
   $scope.forum = 'Angular';
 
   $scope.getPosts = function getPosts() {
-    Posts.getSamplePosts().then(function(data) {
+    Posts.getPosts().then(function(data) {
+      console.log(data);
       $scope.posts = data.data;
     });
   };

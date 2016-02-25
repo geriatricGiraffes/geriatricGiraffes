@@ -9,11 +9,11 @@
     <!-- TODO: need to get post's forum from db  -->
     <span class="post-forum">Angular /</span>
 
-    <h2>{{ post.postTitle }}</h2>
-    <p>{{ post.postBody }}</p>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
 
     <!-- TODO: need to get number of comments from db -->
-    <p class="info">{{ post.postUserId }} - {{ post.postTimeStamp }}<span class="num-comments"> 13 Comments</span></p>
+    <p class="info">{{ post._id }} - {{ post.created }}<span class="num-comments"> 13 Comments</span></p>
 
     <!-- TODO: This only shows up for post author  -->
     <a ui-sref="edit-post({ post: post })">
