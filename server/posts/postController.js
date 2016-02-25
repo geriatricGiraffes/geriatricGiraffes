@@ -6,7 +6,9 @@ module.exports = {
   // gets all posts
   getPosts : function(req, res, next) {
     Post.find(function(err, posts) {
-    if (err) { return next(err); }
+    if (err) {
+      return next(err);
+    }
 
      res.json(posts);
    });
