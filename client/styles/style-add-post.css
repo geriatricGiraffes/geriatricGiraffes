@@ -8,6 +8,7 @@
   margin: 0 0 20px 0;
   padding: 20px;
   font-size: 18px;
+  font-weight: 300;
   border: none;
 }
 
@@ -17,7 +18,7 @@
   padding: 18px;
   border: none;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .add-post select {
