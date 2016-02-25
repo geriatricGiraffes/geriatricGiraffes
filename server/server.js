@@ -36,11 +36,11 @@ mongoose.connect(dbURI);
 
 // UNCOMMENT TO USE WITH MIDDLEWARE.JS
 
-// require('./config/middleware.js')(app, express);
+require('./config/middleware.js')(app, express);
 
 //COMMENT OUT TO USE WITH MIDDLEWARE.JS
 
-app.use(express.static(__dirname + '/../client'));
+// app.use(express.static(__dirname + '/../client'));
 
 
 var port = process.env.PORT || 8000;
