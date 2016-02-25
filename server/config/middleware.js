@@ -10,7 +10,7 @@ module.exports = function ( app, express ) {
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.use(express.static(__dirname + '../../client'));
+  app.use(express.static(__dirname + '/../../client'));
 
   app.use('/api/users', userRouter); // use userRouter for all user requests
   app.use('/api/post', postRouter); // use postRouter for all user post requests
