@@ -16,10 +16,11 @@
     <p class="info">{{ post.postUserId }} - {{ post.postTimeStamp }}<span class="num-comments"> 13 Comments</span></p>
 
     <!-- TODO: This only shows up for post author  -->
-    <span class="edit-delete">
-      <span ng-click="editPost(postId)">EDIT</span> /
-      <span ng-click="deletePost(postId)">DELETE</span>
-    </span><br /><br />
+    <a ui-sref="edit-post({ post: post })">
+      <span class="edit-delete">EDIT<span>
+    </a> /
+    <span ng-click="deletePost(postId)" class="edit-delete">DELETE</span>
+    <br /><br />
 
   </div>
 

@@ -25,10 +25,6 @@ angular.module('hackoverflow.comments', [
     $scope.getComments();
   };
 
-  $scope.editPost = function editPost(postId) {
-    console.log('edit post', postId);
-  };
-
   $scope.deletePost = function deletePost(postId) {
     Posts.deletePost(postId);
     $state.go('posts');
@@ -39,7 +35,7 @@ angular.module('hackoverflow.comments', [
     // before sending newCommentBody off to the db, escape
     // any potentially malicious characters
     $scope.newCommentBody = LaundryService.cleanText($scope.newCommentBody);
-    Comments.createComment($scope.newCommentBody);
+    Comments.createComment($scope.post.postId, $scope.newCommentBody, 'Anonymous', new Date());
     $scope.newCommentBody = '';
   };
 
