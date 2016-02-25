@@ -50,7 +50,7 @@ angular.module('hackoverflow.services', [])
       author: author,
       created: created
     };
-    console.log(newPost);
+    console.log('create post: ', newPost);
     return $http({
       method: 'POST',
       url: '/api/posts',
@@ -58,11 +58,21 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var editPost = function(postId) {
+  var editPost = function(postId, title, body,
+    forum, author, created) {
+    var editedPost = {
+      postId: postId,
+      title: title,
+      body: body,
+      forum: forum,
+      author: author,
+      created: created
+    };
+    console.log('edited post: ', editedPost);
     return $http({
       method: 'PUT',
       url: '/api/posts/' + postId,
-      data: post
+      data: editedPost
     });
   };
 
@@ -119,7 +129,7 @@ angular.module('hackoverflow.services', [])
       author: author,
       created: created
     };
-    console.log(newComment);
+    console.log('new comment: ', newComment);
     return $http({
       method: 'POST',
       url: '/api/comments',
@@ -127,13 +137,14 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var editComment = function(commentId) {
-    return $http({
-      method: 'PUT',
-      url: '/api/comments/' + commentId,
-      data: comment
-    });
-  };
+  // no edit comments for now. v2.
+  // var editComment = function(commentId) {
+  //   return $http({
+  //     method: 'PUT',
+  //     url: '/api/comments/' + commentId,
+  //     data: comment
+  //   });
+  // };
 
   var deleteComment = function(commentId) {
     return $http({
@@ -153,7 +164,7 @@ angular.module('hackoverflow.services', [])
     getSampleComments: getSampleComments,
     getComments: getComments,
     createComment: createComment,
-    editComment: editComment,
+    // editComment: editComment,
     deleteComment: deleteComment,
     getNumberComments: getNumberComments
   };

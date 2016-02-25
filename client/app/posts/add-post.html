@@ -13,15 +13,15 @@
                 required
                 placeholder="Feel free to elaborate"></textarea>
 
-      <select ng-model="forum"
-              ng-init="somethingHere = options[0]"
-              ng-options="forum for forum in forums"></select>
+      <select   ng-model="forum"
+                ng-init="somethingHere = options[0]"
+                ng-options="forum for forum in forums"></select>
 
-      <button type="submit"
-              ng-disabled="addPostForm.$invalid"
-              ng-Class="(title && body && forum !== 'Please choose a forum') ?
+      <button   type="submit"
+                ng-disabled="addPostForm.$invalid"
+                ng-Class="(title && body && forum !== 'Please choose a forum') ?
                 'buttonEnabled' : 'buttonDisabled'">
-        Ask a Quesiton</button>
+                Ask a Quesiton</button>
 
     </div>
   </form>

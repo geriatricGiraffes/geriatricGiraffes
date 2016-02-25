@@ -2,6 +2,7 @@ angular.module('hackoverflow', [
   'hackoverflow.services',
   'hackoverflow.posts',
   'hackoverflow.add-post',
+  'hackoverflow.edit-post',
   'hackoverflow.comments',
   'ui.router',
   'ngRoute'
@@ -10,7 +11,7 @@ angular.module('hackoverflow', [
 .controller('AppController', function($scope, $location) {
 
   // this ensures that application fully reboots and
-  // defaults to main page if user reloads a page. 
+  // defaults to main page if user reloads a page.
   $location.path("/");
 })
 
@@ -26,6 +27,12 @@ angular.module('hackoverflow', [
       url: '/add-post',
       templateUrl: 'app/posts/add-post.html',
       controller: 'AddPostController'
+    })
+    .state('edit-post', {
+      params: {'post': null},
+      url: '/edit-post',
+      templateUrl: 'app/posts/add-post.html',
+      controller: 'EditPostController'
     })
     .state('comments', {
       params: {'post': null},
