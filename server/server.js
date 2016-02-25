@@ -2,11 +2,11 @@ var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 
-// mongoose.connect('mongodb://localhost/hackoverflow'); //connect to mongo database
+//mongoose.connect('mongodb://localhost/hackoverflow'); //connect to mongo database
 
-var dbUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/hackoverflow';
+var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost/hackOverflow';
 
-var dbURI = 'mongodb://localhost/MongoosePM';
+//var dbURI = 'mongodb://localhost/MongoosePM';
 
 mongoose.connect(dbURI);
 

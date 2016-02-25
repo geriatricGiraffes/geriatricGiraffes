@@ -1,3 +1,4 @@
+<<<<<<< 247fd960dab112474e8a48672ca73f4a51dbca83
 module.exports = {
 
   getComments : function ( request, response, next ) {
@@ -34,3 +35,5 @@ module.exports = {
   //   }
 
 };
+=======
+>>>>>>> rebasing
