@@ -35,7 +35,7 @@ angular.module('hackoverflow.services', [])
   var getPosts = function(forum) {
     return $http({
       method: 'GET',
-      url: '/api/posts'
+      url: '/api/post'
     })
     .then(function ( response ){
       return response;
@@ -53,7 +53,7 @@ angular.module('hackoverflow.services', [])
     console.log('create post: ', newPost);
     return $http({
       method: 'POST',
-      url: '/api/posts',
+      url: '/api/post',
       data: newPost
     });
   };
@@ -71,7 +71,7 @@ angular.module('hackoverflow.services', [])
     console.log('edited post: ', editedPost);
     return $http({
       method: 'PUT',
-      url: '/api/posts/' + postId,
+      url: '/api/post/' + postId,
       data: editedPost
     });
   };
@@ -79,7 +79,7 @@ angular.module('hackoverflow.services', [])
   var deletePost = function(postId) {
     return $http({
       method: 'DELETE',
-      url: '/api/posts/postId'
+      url: '/api/post/postId'
     });
   };
 
