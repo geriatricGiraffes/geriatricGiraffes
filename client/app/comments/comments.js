@@ -25,10 +25,6 @@ angular.module('hackoverflow.comments', [
     $scope.getComments();
   };
 
-  $scope.editPost = function editPost(postId) {
-    console.log('edit post', postId);
-  };
-
   $scope.deletePost = function deletePost(postId) {
     Posts.deletePost(postId);
     $state.go('posts');

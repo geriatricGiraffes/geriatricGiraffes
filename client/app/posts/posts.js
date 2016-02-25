@@ -14,7 +14,6 @@ angular.module('hackoverflow.posts', [
 
   $scope.getPosts = function getPosts() {
     Posts.getSamplePosts().then(function(data) {
-      console.log(data.data);
       $scope.posts = data.data;
     });
   };
@@ -26,7 +25,6 @@ angular.module('hackoverflow.posts', [
   };
 
   $scope.switchForum = function switchForum(forum) {
-    console.log('forum: ', forum);
     $scope.forum = forum;
     $scope.getForums(forum);
   };
