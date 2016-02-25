@@ -16,7 +16,7 @@ module.exports = {
   // },
   
   newComment : function(req, res, next) {
-   var comment = new Comment();
+   var comment = new Comment(req.body);
    comment.post = req.post;
    comment.author = 'anonymous';
    comment.body = req.body.body;

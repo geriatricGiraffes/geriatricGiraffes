@@ -1,6 +1,8 @@
 var Post       = require('./postModel.js');
 var Comment    = require('../comments/commentModel.js')
 module.exports = {
+
+  
   // gets all posts
   getPosts : function(req, res, next) {
     Post.find(function(err, posts) {
