@@ -1,6 +1,6 @@
 module.exports = {
 
-  getComments : function ( request, response ) {
+  getComments : function ( request, response, next ) {
     Post.comments.find(function(err, lesComments){
       if (err) {
         return response.send(err);
@@ -10,7 +10,7 @@ module.exports = {
     });
 
   },
-  newComment : function ( request, response ) {
+  newComment : function ( request, response, next ) {
     var comment = new Post.comments.push(request.body);
 
     comment.save(function(err) {
@@ -20,7 +20,7 @@ module.exports = {
 
       response.send({ message: 'Post added!'});
     });
-  },
+  }
 
   // deleteComment : function ( request, response ) {
   //   Post.comments.comment.remove({
