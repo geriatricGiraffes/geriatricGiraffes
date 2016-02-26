@@ -7,7 +7,7 @@ angular.module('hackoverflow.edit-post', [
 })
 
 .controller('EditPostController', function($scope, $state,
-  $stateParams, Posts, LaundryService) {
+  $stateParams, Posts) {
 
   $scope.forums = [];
   $scope.forum = 'Please choose a forum';
@@ -18,18 +18,13 @@ angular.module('hackoverflow.edit-post', [
   $scope.forum = $scope.post.postForum;
 
   $scope.getForums = function getForums() {
-    Posts.getSampleForums().then(function(data) {
+    Posts.getForums().then(function(data) {
       $scope.forums = data.data.sort();
       $scope.forums.unshift('Please choose a forum');
     });
   };
 
   $scope.submit = function() {
-
-    // before sending title and body off to the db, escape
-    // any potentially malicious characters
-    $scope.title = LaundryService.cleanText($scope.title);
-    $scope.body = LaundryService.cleanText($scope.body);
 
     Posts.editPost($scope.postId, $scope.title,
       $scope.body, $scope.forum, 'Anonymous', new Date());

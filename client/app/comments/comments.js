@@ -8,7 +8,7 @@ angular.module('hackoverflow.comments', [
 
 .controller('CommentsController',
   function($scope, $rootScope, $stateParams, $state, Comments,
-    Posts, LaundryService, TimeService) {
+    Posts, TimeService) {
 
   $scope.comments = [];
   $scope.post = $stateParams.post;
