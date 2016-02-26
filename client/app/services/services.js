@@ -59,9 +59,10 @@ angular.module('hackoverflow.services', [])
   };
 
   var deletePost = function(postId) {
+    console.log(postId + ' is for deleting');
     return $http({
       method: 'DELETE',
-      url: '/api/post/postId'
+      url: '/api/post/' + postId
     });
   };
 
@@ -114,10 +115,10 @@ angular.module('hackoverflow.services', [])
   //   });
   // };
 
-  var deleteComment = function(commentId) {
+  var deleteComment = function(postId, commentId) {
     return $http({
       method: 'DELETE',
-      url: '/api/post/commentId'
+      url: '/api/post/' + postId + '/comments/' + commentId
     });
   };
 

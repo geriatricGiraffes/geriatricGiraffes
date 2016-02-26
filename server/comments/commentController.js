@@ -29,8 +29,18 @@ module.exports = {
        response.json(comment);
      });
    });
- }
+ },
 
+  deleteComment : function ( request, response, next ) {
+    Comment.remove({
+      _id: request.params.comment
+    }, function(err, post) {
+      if (err) {
+        return response.send(err);
+      }
+      response.json({ message: 'Successfully deleted' });
+    });
+    }
 
 
 
@@ -49,16 +59,6 @@ module.exports = {
   //   });
   // }
 
-  // deleteComment : function ( request, response ) {
-  //   Post.comments.comment.remove({
-  //     _id: request.params.id
-  //   }, function(err, post) {
-  //     if (err) {
-  //       return response.send(err);
-  //     }
-  //     response.json({ message: 'Successfully deleted' });
-  //   });
-  //   }
 
 };
 
