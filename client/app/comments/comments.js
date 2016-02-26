@@ -15,7 +15,7 @@ angular.module('hackoverflow.comments', [
   $scope.newCommentBody = '';
 
   $scope.getComments = function getComments() {
-    Comments.getSampleComments($scope.postId).then(function(data) {
+    Comments.getComments($scope.post._id).then(function(data) {
       $scope.comments = data.data;
     });
   };
@@ -35,7 +35,7 @@ angular.module('hackoverflow.comments', [
     // before sending newCommentBody off to the db, escape
     // any potentially malicious characters
     $scope.newCommentBody = LaundryService.cleanText($scope.newCommentBody);
-    Comments.createComment($scope.post.postId, $scope.newCommentBody, 'Anonymous', new Date());
+    Comments.createComment($scope.post._id, $scope.newCommentBody, 'Anonymous', new Date());
     $scope.newCommentBody = '';
   };
 
