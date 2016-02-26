@@ -55,24 +55,30 @@ module.exports = {
 
   // },
   // deletes post and it comment children
-  deletePost : function(req, res) {
-   req.post.comments.forEach(function(id) {
+  deletePost : function ( request, response, next ) {
+   request.post.comments.forEach(function(id) {
     Comment.remove({
       _id: id
      }, function(err) {
-      if (err) { return next(err)}
+      if (err) {
+        return next(err);
+      }
      });
    });
    Post.remove({
-    _id: req.params.post
+    _id: request.params.post
    }, function(err, post) {
-     if (err) { return next(err); }
+     if (err) {
+      return next(err);
+     }
 
     // get and return all the posts after you delete one
     Post.find(function(err, posts) {
-      if (err) { return next(err); }
+      if (err) {
+        return next(err);
+      }
 
-       res.json(posts);
+       response.json(posts);
     });
    });
  }

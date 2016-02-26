@@ -23,7 +23,7 @@
     <a ui-sref="edit-post({ post: post })">
       <span class="edit-delete">EDIT<span>
     </a> /
-    <span ng-click="deletePost(postId)" class="edit-delete">DELETE</span>
+    <span ng-click="deletePost(post._id)" class="edit-delete">DELETE</span>
     <br /><br />
 
   </div>
@@ -37,7 +37,7 @@
         </p>
 
         <!-- TODO: This only shows up for comment author  -->
-        <span class="edit-delete" ng-click="deleteComment(comment.commentId)">DELETE</span>
+        <span class="edit-delete" ng-click="deleteComment(post._id, comment._id)">DELETE</span>
 
       </div>
   </div>

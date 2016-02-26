@@ -12,6 +12,7 @@ angular.module('hackoverflow.comments', [
 
   $scope.comments = [];
   $scope.post = $stateParams.post;
+  $scope.comment = $stateParams.comment;
   $scope.newCommentBody = '';
   $scope.author = 'Anonymous';
   $scope.TimeService = TimeService;
@@ -22,8 +23,8 @@ angular.module('hackoverflow.comments', [
     });
   };
 
-  $scope.deleteComment = function deleteComment(commentId) {
-    Comments.deleteComment(commentId);
+  $scope.deleteComment = function deleteComment(postId, commentId) {
+    Comments.deleteComment(postId, commentId);
     $scope.getComments();
   };
 
