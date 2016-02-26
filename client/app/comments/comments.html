@@ -27,7 +27,7 @@
   <div>
       <div class="comment" ng-repeat="comment in comments | filter:searchFor">
         <p>{{ comment.body }}</p>
-        <p class="info">{{ comment.userId }} - {{ comment.timeStamp }}</p>
+        <p class="info">{{ comment.author }} - {{ comment.created }}</p>
 
         <!-- TODO: This only shows up for comment author  -->
         <span class="edit-delete" ng-click="deleteComment(comment.commentId)">DELETE</span>
