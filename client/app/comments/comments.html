@@ -6,8 +6,7 @@
 
   <div class="comments-post">
 
-    <!-- TODO: need to get post's forum from db  -->
-    <span class="post-forum">Angular /</span>
+    <span class="post-forum">{{ post.forum }} /</span>
 
     <h2 ng-bind="post.title"></h2>
     <p ng-bind="post.body"></p>
