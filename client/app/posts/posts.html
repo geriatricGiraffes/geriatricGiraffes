@@ -2,7 +2,8 @@
 
 <div id="posts-container">
 
-  <div class="posts" ng-repeat="post in posts | filter:searchFor">
+  <div class="posts" ng-repeat="post in posts |
+    orderBy:'-post.created':true | filter: searchFor">
     <a ui-sref="comments({post: post})">
       <h2>{{ post.title }}</h2></a>
 
