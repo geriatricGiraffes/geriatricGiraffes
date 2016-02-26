@@ -33,7 +33,7 @@
         <p ng-bind="comment.body"></p>
         <p class="info"><span ng-bind="comment.author"></span> -
 
-          {{ TimeService.relativeDate(comment.timeStamp) }}
+          {{ TimeService.relativeDate(comment.created) }}
         </p>
 
         <!-- TODO: This only shows up for comment author  -->
