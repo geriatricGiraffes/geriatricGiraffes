@@ -7,7 +7,11 @@
       <h2>{{ post.title }}</h2></a>
 
       <!-- TODO: get number of comments from db -->
-      <p>{{ post._id }}  - {{ post.created }} <span class="num-comments">45 Comments</span></p>
+      <p>
+        {{ post._id }} -
+        {{ TimeService.relativeDate(post.created) }}
+        <span class="num-comments">45 Comments</span>
+      </p>
   </div>
 
   <div class="sidebar">
