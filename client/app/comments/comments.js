@@ -8,11 +8,12 @@ angular.module('hackoverflow.comments', [
 
 .controller('CommentsController',
   function($scope, $rootScope, $stateParams, $state, Comments,
-    Posts, LaundryService) {
+    Posts, LaundryService, TimeService) {
 
   $scope.comments = [];
   $scope.post = $stateParams.post;
   $scope.newCommentBody = '';
+  $scope.TimeService = TimeService;
 
   $scope.getComments = function getComments() {
     Comments.getSampleComments($scope.postId).then(function(data) {

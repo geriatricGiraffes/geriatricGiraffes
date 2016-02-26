@@ -6,11 +6,12 @@ angular.module('hackoverflow.posts', [
 .config(function($httpProvider, $urlRouterProvider, $stateProvider) {
 })
 
-.controller('PostsController', function($scope, $stateParams, $state, Posts) {
+.controller('PostsController', function($scope, $stateParams, $state, Posts, TimeService) {
 
   $scope.posts = [];
   $scope.forums = [];
   $scope.forum = 'Angular';
+  $scope.TimeService = TimeService;
 
   $scope.getPosts = function getPosts() {
     Posts.getPosts().then(function(data) {

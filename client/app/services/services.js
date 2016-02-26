@@ -239,4 +239,16 @@ angular.module('hackoverflow.services', [])
   return {
     cleanText: cleanText
   };
+})
+
+.factory('TimeService', function() {
+
+  var relativeDate = function(date) {
+    return moment(date).fromNow();
+  };
+
+  return {
+    relativeDate: relativeDate
+  };
+
 });
