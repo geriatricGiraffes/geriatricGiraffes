@@ -14,7 +14,9 @@ angular.module('hackoverflow.posts', [
   $scope.TimeService = TimeService;
 
   $scope.getPosts = function getPosts(forum) {
-    Posts.getPosts(forum).then(function(data) {
+
+    // TODO: need to pass in forum to Posts.getPosts()
+    Posts.getPosts('').then(function(data) {
       console.log(data);
       $scope.posts = data.data;
     });
