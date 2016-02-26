@@ -113,11 +113,13 @@ angular.module('hackoverflow.services', [])
   };
 
   var getComments = function(postId) {
+    console.log(postId + " is postId");
     return $http({
       method: 'GET',
-      url: '/api/comments'
+      url: '/api/post/' + postId + '/comments'
     })
     .then(function(response) {
+      console.log(response);
       return response;
       });
     };
@@ -132,7 +134,7 @@ angular.module('hackoverflow.services', [])
     console.log('new comment: ', newComment);
     return $http({
       method: 'POST',
-      url: '/api/comments',
+      url: '/api/post/' + postId + '/comments',
       data: newComment
     });
   };
@@ -149,7 +151,7 @@ angular.module('hackoverflow.services', [])
   var deleteComment = function(commentId) {
     return $http({
       method: 'DELETE',
-      url: '/api/comments/commentId'
+      url: '/api/post/commentId'
     });
   };
 
