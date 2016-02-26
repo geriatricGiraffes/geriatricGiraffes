@@ -11,6 +11,7 @@ angular.module('hackoverflow.add-post', [
 
   $scope.title = '';
   $scope.body = '';
+  $scope.author = 'Anonymous'
   $scope.forums = [];
   $scope.forum = 'Please choose a forum';
 
@@ -23,7 +24,12 @@ angular.module('hackoverflow.add-post', [
 
   $scope.submit = function() {
 
-    Posts.createPost($scope.title, $scope.body, $scope.forum, 'Anonymous', new Date());
+    if ($scope.author === 'Anonymous') {
+      $scope.author = prompt('Please enter your name');
+    }
+
+    Posts.createPost($scope.title, $scope.body, $scope.forum,
+      $scope.author, new Date());
     $state.go('posts');
   };
 
