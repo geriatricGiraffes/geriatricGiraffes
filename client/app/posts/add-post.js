@@ -6,8 +6,8 @@ angular.module('hackoverflow.add-post', [
 .config(function($stateProvider) {
 })
 
-.controller('AddPostController', function($scope, $state, $stateParams,
-  Posts, LaundryService) {
+.controller('AddPostController', function($scope, $state,
+  $stateParams, Posts) {
 
   $scope.title = '';
   $scope.body = '';
@@ -22,11 +22,6 @@ angular.module('hackoverflow.add-post', [
   };
 
   $scope.submit = function() {
-
-    // before sending title and body off to the db, escape
-    // any potentially malicious characters
-    $scope.title = LaundryService.cleanText($scope.title);
-    $scope.body = LaundryService.cleanText($scope.body);
 
     Posts.createPost($scope.title, $scope.body, $scope.forum, 'Anonymous', new Date());
     $state.go('posts');

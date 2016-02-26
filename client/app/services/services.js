@@ -217,32 +217,6 @@ angular.module('hackoverflow.services', [])
 
 })
 
-.factory('LaundryService', function() {
-
-  // used by post and comment forms to escape any
-  // malicious-looking characters
-  var cleanText = function(text) {
-    text = text || '';
-    var textArray = text.split('');
-    var badChars = ['<', '>', '&', '"', "'", '!', '@',
-                    '$', '%', '(', ')', '=', '+', '{', '}',
-                    '[', ']', '-'];
-
-    for (var i = 0; i < badChars.length; i++) {
-      for (var j = 0; j < textArray.length; j++) {
-        if (textArray[j] === badChars[i]) {
-          textArray[j] = '&#' + textArray[j].charCodeAt(0) + ';';
-        }
-      }
-    }
-    return textArray.join('');
-  };
-
-  return {
-    cleanText: cleanText
-  };
-})
-
 .factory('TimeService', function() {
 
   var relativeDate = function(date) {
