@@ -19,13 +19,13 @@
       <span class="num-comments"> 13 Comments</span>
     </p>
 
-    <!-- TODO: This only shows up for post author  -->
-    <a ui-sref="edit-post({ post: post })">
-      <span class="edit-delete">EDIT<span>
-    </a> /
-    <span ng-click="deletePost(post._id)" class="edit-delete">DELETE</span>
+    <div ng-if="theUser === post.author">
+      <a ui-sref="edit-post({ post: post })">
+        <span class="edit-delete">EDIT<span>
+        </a> /
+        <span ng-click="deletePost(post._id)" class="edit-delete">DELETE</span>
+    </div>
     <br /><br />
-
   </div>
 
   <div>
@@ -36,8 +36,9 @@
           {{ TimeService.relativeDate(comment.created) }}
         </p>
 
-        <!-- TODO: This only shows up for comment author  -->
-        <span class="edit-delete" ng-click="deleteComment(post._id, comment._id)">DELETE</span>
+        <div ng-if="theUser === comment.author">
+          <span class="edit-delete" ng-click="deleteComment(post._id, comment._id)">DELETE</span>
+        </div>
 
       </div>
   </div>
