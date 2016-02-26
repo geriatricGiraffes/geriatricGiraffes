@@ -13,9 +13,9 @@ angular.module('hackoverflow.edit-post', [
   $scope.forum = 'Please choose a forum';
   $scope.post = $stateParams.post;
   $scope.postId = $scope.post.postId;
-  $scope.title = $scope.post.postTitle;
-  $scope.body = $scope.post.postBody;
-  $scope.forum = $scope.post.postForum;
+  $scope.title = $scope.post.title;
+  $scope.body = $scope.post.body;
+  $scope.forum = $scope.post.forum;
 
   $scope.getForums = function getForums() {
     Posts.getForums().then(function(data) {
