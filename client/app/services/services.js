@@ -4,20 +4,6 @@ angular.module('hackoverflow.services', [])
 
 .factory('Posts', function($http) {
 
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSamplePosts when db online
-  var getSamplePosts = function() {
-    return $http({
-      method: 'GET',
-      url: 'app/services/samplePostsData.json'
-    })
-    .then(function(response){
-      return response;
-    });
-  };
-
   var getForums = function() {
     return $http({
       method: 'GET',
@@ -80,7 +66,6 @@ angular.module('hackoverflow.services', [])
   };
 
   return {
-    getSamplePosts: getSamplePosts,
     getForums: getForums,
     getPosts: getPosts,
     createPost: createPost,
