@@ -18,6 +18,7 @@ module.exports = {
    comment.post = request.post;
    comment.author = request.body.author;
    comment.body = request.body.body;
+   comment.created = request.body.created;
    comment.save(function(err, comment) {
      if (err) { return next(err); }
 
