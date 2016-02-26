@@ -9,7 +9,7 @@
 
       <!-- TODO: get number of comments from db -->
       <p>
-        <span ng-bind="post._id"></span> -
+        <span ng-bind="post.author"></span> -
         {{ TimeService.relativeDate(post.created) }}
         <span class="num-comments">45 Comments</span>
       </p>
