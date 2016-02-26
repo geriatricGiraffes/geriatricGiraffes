@@ -4,28 +4,10 @@ angular.module('hackoverflow.services', [])
 
 .factory('Posts', function($http) {
 
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSamplePosts when db online
-  var getSamplePosts = function() {
+  var getForums = function() {
     return $http({
       method: 'GET',
-      url: 'app/services/samplePostsData.json'
-    })
-    .then(function(response){
-      return response;
-    });
-  };
-
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSampleForums when db online
-  var getSampleForums = function() {
-    return $http({
-      method: 'GET',
-      url: 'app/services/sampleForumData.json'
+      url: 'app/config/forums.json'
     })
     .then(function ( response ){
       return response;
@@ -84,8 +66,7 @@ angular.module('hackoverflow.services', [])
   };
 
   return {
-    getSamplePosts: getSamplePosts,
-    getSampleForums: getSampleForums,
+    getForums: getForums,
     getPosts: getPosts,
     createPost: createPost,
     editPost: editPost,
@@ -96,21 +77,6 @@ angular.module('hackoverflow.services', [])
 // COMMENTS
 
 .factory('Comments', function ( $http ) {
-
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSampleComments when db online
-  var getSampleComments = function(postId) {
-    // db integration to replace sample data
-    return $http({
-      method: 'GET',
-      url: 'app/services/sampleCommentsData.json'
-    })
-    .then(function(response) {
-      return response;
-    });
-  };
 
   var getComments = function(postId) {
     console.log(postId + " is postId");
@@ -163,7 +129,6 @@ angular.module('hackoverflow.services', [])
   };
 
   return {
-    getSampleComments: getSampleComments,
     getComments: getComments,
     createComment: createComment,
     // editComment: editComment,
@@ -217,28 +182,14 @@ angular.module('hackoverflow.services', [])
 
 })
 
-.factory('LaundryService', function() {
+.factory('TimeService', function() {
 
-  // used by post and comment forms to escape any
-  // malicious-looking characters
-  var cleanText = function(text) {
-    text = text || '';
-    var textArray = text.split('');
-    var badChars = ['<', '>', '&', '"', "'", '!', '@',
-                    '$', '%', '(', ')', '=', '+', '{', '}',
-                    '[', ']', '-'];
-
-    for (var i = 0; i < badChars.length; i++) {
-      for (var j = 0; j < textArray.length; j++) {
-        if (textArray[j] === badChars[i]) {
-          textArray[j] = '&#' + textArray[j].charCodeAt(0) + ';';
-        }
-      }
-    }
-    return textArray.join('');
+  var relativeDate = function(date) {
+    return moment(date).fromNow();
   };
 
   return {
-    cleanText: cleanText
+    relativeDate: relativeDate
   };
+
 });

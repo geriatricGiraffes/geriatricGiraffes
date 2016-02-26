@@ -8,11 +8,13 @@ angular.module('hackoverflow.comments', [
 
 .controller('CommentsController',
   function($scope, $rootScope, $stateParams, $state, Comments,
-    Posts, LaundryService) {
+    Posts, TimeService) {
 
   $scope.comments = [];
   $scope.post = $stateParams.post;
   $scope.newCommentBody = '';
+  $scope.author = 'Anonymous';
+  $scope.TimeService = TimeService;
 
   $scope.getComments = function getComments() {
     Comments.getComments($scope.post._id).then(function(data) {
@@ -32,11 +34,14 @@ angular.module('hackoverflow.comments', [
 
   $scope.submit = function() {
 
-    // before sending newCommentBody off to the db, escape
-    // any potentially malicious characters
-    $scope.newCommentBody = LaundryService.cleanText($scope.newCommentBody);
-    Comments.createComment($scope.post._id, $scope.newCommentBody, 'Anonymous', new Date());
+    if ($scope.author === 'Anonymous') {
+      $scope.author = prompt('Please enter your name');
+    }
+
+    Comments.createComment($scope.post._id, $scope.newCommentBody,
+      $scope.author, new Date());
     $scope.newCommentBody = '';
+    $scope.getComments();
   };
 
   $scope.getComments();

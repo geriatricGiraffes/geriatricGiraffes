@@ -6,16 +6,17 @@ angular.module('hackoverflow.add-post', [
 .config(function($stateProvider) {
 })
 
-.controller('AddPostController', function($scope, $state, $stateParams,
-  Posts, LaundryService) {
+.controller('AddPostController', function($scope, $state,
+  $stateParams, Posts) {
 
   $scope.title = '';
   $scope.body = '';
+  $scope.author = 'Anonymous'
   $scope.forums = [];
   $scope.forum = 'Please choose a forum';
 
   $scope.getForums = function getForums() {
-    Posts.getSampleForums().then(function(data) {
+    Posts.getForums().then(function(data) {
       $scope.forums = data.data.sort();
       $scope.forums.unshift('Please choose a forum');
     });
@@ -23,12 +24,12 @@ angular.module('hackoverflow.add-post', [
 
   $scope.submit = function() {
 
-    // before sending title and body off to the db, escape
-    // any potentially malicious characters
-    $scope.title = LaundryService.cleanText($scope.title);
-    $scope.body = LaundryService.cleanText($scope.body);
+    if ($scope.author === 'Anonymous') {
+      $scope.author = prompt('Please enter your name');
+    }
 
-    Posts.createPost($scope.title, $scope.body, $scope.forum, 'Anonymous', new Date());
+    Posts.createPost($scope.title, $scope.body, $scope.forum,
+      $scope.author, new Date());
     $state.go('posts');
   };
 
