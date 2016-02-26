@@ -34,12 +34,8 @@ angular.module('hackoverflow.comments', [
 
   $scope.submit = function() {
 
-    if ($scope.author === 'Anonymous') {
-      $scope.author = prompt('Please enter your name');
-    }
-
     Comments.createComment($scope.post._id, $scope.newCommentBody,
-      $scope.author, new Date());
+      $rootScope.user, new Date());
     $scope.newCommentBody = '';
     $scope.getComments();
   };

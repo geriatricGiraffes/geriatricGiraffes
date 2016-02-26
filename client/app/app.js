@@ -9,6 +9,15 @@ angular.module('hackoverflow', [
   'ngSanitize'
 ])
 
+.run(function($rootScope) {
+
+  // this global user variable is a stopgap measure
+  // until github authentication is implemented
+  if (!$rootScope.user) {
+    $rootScope.user = prompt('What is your name?');
+  }
+})
+
 .controller('AppController', function($scope, $location) {
 
   // this ensures that application fully reboots and
