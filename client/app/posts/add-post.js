@@ -6,12 +6,11 @@ angular.module('hackoverflow.add-post', [
 .config(function($stateProvider) {
 })
 
-.controller('AddPostController', function($scope, $state,
+.controller('AddPostController', function($scope, $rootScope, $state,
   $stateParams, Posts) {
 
   $scope.title = '';
   $scope.body = '';
-  $scope.author = 'Anonymous'
   $scope.forums = [];
   $scope.forum = 'Please choose a forum';
 
@@ -24,12 +23,8 @@ angular.module('hackoverflow.add-post', [
 
   $scope.submit = function() {
 
-    if ($scope.author === 'Anonymous') {
-      $scope.author = prompt('Please enter your name');
-    }
-
     Posts.createPost($scope.title, $scope.body, $scope.forum,
-      $scope.author, new Date());
+      $rootScope.user, new Date());
     $state.go('posts');
   };
 
