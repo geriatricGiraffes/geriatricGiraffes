@@ -78,21 +78,6 @@ angular.module('hackoverflow.services', [])
 
 .factory('Comments', function ( $http ) {
 
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSampleComments when db online
-  var getSampleComments = function(postId) {
-    // db integration to replace sample data
-    return $http({
-      method: 'GET',
-      url: 'app/services/sampleCommentsData.json'
-    })
-    .then(function(response) {
-      return response;
-    });
-  };
-
   var getComments = function(postId) {
     console.log(postId + " is postId");
     return $http({
@@ -144,7 +129,6 @@ angular.module('hackoverflow.services', [])
   };
 
   return {
-    getSampleComments: getSampleComments,
     getComments: getComments,
     createComment: createComment,
     // editComment: editComment,
