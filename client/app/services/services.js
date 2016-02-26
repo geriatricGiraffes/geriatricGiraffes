@@ -18,14 +18,10 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSampleForums when db online
-  var getSampleForums = function() {
+  var getForums = function() {
     return $http({
       method: 'GET',
-      url: 'app/services/sampleForumData.json'
+      url: 'app/config/forums.json'
     })
     .then(function ( response ){
       return response;
@@ -85,7 +81,7 @@ angular.module('hackoverflow.services', [])
 
   return {
     getSamplePosts: getSamplePosts,
-    getSampleForums: getSampleForums,
+    getForums: getForums,
     getPosts: getPosts,
     createPost: createPost,
     editPost: editPost,

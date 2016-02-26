@@ -20,15 +20,15 @@ angular.module('hackoverflow.posts', [
     });
   };
 
-  $scope.getForums = function getForums(forum) {
-    Posts.getSampleForums(forum).then(function(data) {
+  $scope.getForums = function getForums() {
+    Posts.getForums().then(function(data) {
       $scope.forums = data.data.sort();
     });
   };
 
   $scope.switchForum = function switchForum(forum) {
     $scope.forum = forum;
-    $scope.getForums(forum);
+    $scope.getForums();
   };
 
   $scope.getPosts();
