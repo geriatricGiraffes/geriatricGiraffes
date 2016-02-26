@@ -34,26 +34,26 @@ module.exports = {
    });
  },
 
-  // editPost : function ( request, response ) {
-  //   Post.findOne({ _id: request.params.id }, function(err, post){
-  //     if (err){
-  //       return response.send(err);
-  //     }
+  editPost : function ( request, response ) {
+    Post.findOne({ _id: request.params.post }, function(err, post){
+      if (err){
+        return response.send(err);
+      }
 
-  //     for (var prop in request.body) {
-  //       post[prop] = request.body[prop];
-  //     }
+      for (var prop in request.body) {
+        post[prop] = request.body[prop];
+      }
 
-  //     post.save(function(err) {
-  //       if (err) {
-  //         return response.send(err);
-  //       }
+      post.save(function(err) {
+        if (err) {
+          return response.send(err);
+        }
 
-  //       response.json({ message: 'Post updated!'});
-  //     });
-  //   });
+        response.json({ message: 'Post updated!'});
+      });
+    });
 
-  // },
+  },
   // deletes post and it comment children
   deletePost : function ( request, response, next ) {
    request.post.comments.forEach(function(id) {
