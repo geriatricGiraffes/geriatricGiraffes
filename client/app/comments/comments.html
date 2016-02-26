@@ -9,12 +9,12 @@
     <!-- TODO: need to get post's forum from db  -->
     <span class="post-forum">Angular /</span>
 
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.body }}</p>
+    <h2 ng-bind="post.title"></h2>
+    <p ng-bind="post.body"></p>
 
     <!-- TODO: need to get number of comments from db -->
     <p class="info">
-      {{ post._id }} -
+      <span ng-bind="post._id"></span> -
       {{ TimeService.relativeDate(post.created) }}
       <span class="num-comments"> 13 Comments</span>
     </p>
@@ -30,8 +30,9 @@
 
   <div>
       <div class="comment" ng-repeat="comment in comments | filter:searchFor">
-        <p>{{ comment.body }}</p>
-        <p class="info">{{ comment.userId }} -
+        <p ng-bind="comment.body"></p>
+        <p class="info"><span ng-bind="comment.userId"></span> -
+
           {{ TimeService.relativeDate(comment.timeStamp) }}
         </p>
 

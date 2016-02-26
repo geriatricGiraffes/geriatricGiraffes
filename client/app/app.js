@@ -5,7 +5,8 @@ angular.module('hackoverflow', [
   'hackoverflow.edit-post',
   'hackoverflow.comments',
   'ui.router',
-  'ngRoute'
+  'ngRoute',
+  'ngSanitize'
 ])
 
 .controller('AppController', function($scope, $location) {
