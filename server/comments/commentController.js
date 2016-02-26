@@ -16,7 +16,7 @@ module.exports = {
   newComment : function(request, response, next) {
    var comment = new Comment(request.body);
    comment.post = request.post;
-   comment.author = 'anonymous';
+   comment.author = request.body.author;
    comment.body = request.body.body;
    comment.save(function(err, comment) {
      if (err) { return next(err); }

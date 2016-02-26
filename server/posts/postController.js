@@ -20,15 +20,17 @@ module.exports = {
    });
  },
     // creates a new post
-  newPost : function(req, res, next) {
-    var post = new Post(req.body);
-    post.title = req.body.title;
-    post.author = 'anonymous';
-    post.body = req.body.body;
+  newPost : function(request, response, next) {
+    var post = new Post(request.body);
+    post.title = request.body.title;
+    post.author = request.body.author;
+    post.body = request.body.body;
     post.save(function(err, post) {
-     if(err) { return next(err); }
+     if(err) {
+      return next(err);
+    }
 
-     res.json(post);
+     response.json(post);
    });
  },
 

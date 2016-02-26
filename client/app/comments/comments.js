@@ -34,8 +34,7 @@ angular.module('hackoverflow.comments', [
 
   $scope.submit = function() {
 
-    Comments.createComment($scope.post._id, $scope.newCommentBody,
-      $rootScope.user, new Date());
+    Comments.createComment($scope.post._id, $scope.newCommentBody, $rootScope.user, new Date());
     $scope.newCommentBody = '';
     $scope.getComments();
   };

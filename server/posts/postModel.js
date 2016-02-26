@@ -4,15 +4,15 @@
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({
-	form:String,
-	name: String,
+	forum:String,
+	author: String,
 	title: String,
 	body: String,
 	created: {
 		type: Date,
 		default: Date.now
 	},
-	comments: [{ 
+	comments: [{
 		author: String,
 		body:String,
 		created: {
