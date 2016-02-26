@@ -56,10 +56,10 @@ module.exports = {
   },
   // deletes post and it comment children
   deletePost : function ( request, response, next ) {
-   request.post.comments.forEach(function(id) {
+   request.post.comments.forEach( function ( id ) {
     Comment.remove({
       _id: id
-     }, function(err) {
+     }, function ( err ) {
       if (err) {
         return next(err);
       }
@@ -67,19 +67,24 @@ module.exports = {
    });
    Post.remove({
     _id: request.params.post
-   }, function(err, post) {
+   }, function ( err, post ) {
      if (err) {
       return next(err);
      }
 
     // get and return all the posts after you delete one
-    Post.find(function(err, posts) {
-      if (err) {
-        return next(err);
+    Post.find(function ( err, posts ) {
+      if ( err ) {
+        return next( err );
       }
 
-       response.json(posts);
+       response.json( posts );
     });
    });
+ },
+
+ getPostForum : function ( request, response, next ) {
+  Post.find({}).select({ forum: request.body.post.forum })
  }
+
 };

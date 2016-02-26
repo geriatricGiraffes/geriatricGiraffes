@@ -13,14 +13,14 @@ angular.module('hackoverflow.posts', [
   $scope.forum = 'Angular';
   $scope.TimeService = TimeService;
 
-  $scope.getPosts = function getPosts() {
-    Posts.getPosts().then(function(data) {
+  $scope.getPosts = function getPosts(forum) {
+    Posts.getPosts(forum).then(function(data) {
       console.log(data);
       $scope.posts = data.data;
     });
   };
 
-  $scope.getForums = function getForums() {
+  $scope.getForums = function getForums(forum) {
     Posts.getForums().then(function(data) {
       $scope.forums = data.data.sort();
     });
@@ -31,6 +31,6 @@ angular.module('hackoverflow.posts', [
     $scope.getForums();
   };
 
-  $scope.getPosts();
+  $scope.getPosts($scope.forum);
   $scope.getForums();
 });

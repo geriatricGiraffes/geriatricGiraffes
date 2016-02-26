@@ -17,7 +17,7 @@ angular.module('hackoverflow.services', [])
   var getPosts = function(forum) {
     return $http({
       method: 'GET',
-      url: '/api/post'
+      url: '/api/post/' + forum,
     })
     .then(function ( response ){
       return response;

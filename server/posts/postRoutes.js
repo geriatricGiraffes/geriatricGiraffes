@@ -28,10 +28,12 @@ app.param('comment', function (req, res, next, id) {
 		return next();
 	});
 });
+
   // app === postRouter injected from middleware.js
     app.get('/', postController.getPosts);
     app.post('/', postController.newPost);
     app.get('/:post', postController.getPost);
     app.put('/:post', postController.editPost);
     app.delete('/:post', postController.deletePost);
+    app.get('/:forum', postController.getPostForum);
 };
