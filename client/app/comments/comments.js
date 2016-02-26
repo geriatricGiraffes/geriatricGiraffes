@@ -13,10 +13,11 @@ angular.module('hackoverflow.comments', [
   $scope.comments = [];
   $scope.post = $stateParams.post;
   $scope.newCommentBody = '';
+  $scope.author = 'Anonymous';
   $scope.TimeService = TimeService;
 
   $scope.getComments = function getComments() {
-    Comments.getSampleComments($scope.postId).then(function(data) {
+    Comments.getComments($scope.post._id).then(function(data) {
       $scope.comments = data.data;
     });
   };
@@ -33,8 +34,14 @@ angular.module('hackoverflow.comments', [
 
   $scope.submit = function() {
 
-    Comments.createComment($scope.post.postId, $scope.newCommentBody, 'Anonymous', new Date());
+    if ($scope.author === 'Anonymous') {
+      $scope.author = prompt('Please enter your name');
+    }
+
+    Comments.createComment($scope.post._id, $scope.newCommentBody,
+      $scope.author, new Date());
     $scope.newCommentBody = '';
+    $scope.getComments();
   };
 
   $scope.getComments();

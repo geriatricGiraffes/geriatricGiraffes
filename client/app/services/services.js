@@ -78,27 +78,14 @@ angular.module('hackoverflow.services', [])
 
 .factory('Comments', function ( $http ) {
 
-  // db integration to replace sample data
-  // this method will become obsolete when
-  // db is online
-  // TODO: remove getSampleComments when db online
-  var getSampleComments = function(postId) {
-    // db integration to replace sample data
-    return $http({
-      method: 'GET',
-      url: 'app/services/sampleCommentsData.json'
-    })
-    .then(function(response) {
-      return response;
-    });
-  };
-
   var getComments = function(postId) {
+    console.log(postId + " is postId");
     return $http({
       method: 'GET',
-      url: '/api/comments'
+      url: '/api/post/' + postId + '/comments'
     })
     .then(function(response) {
+      console.log(response);
       return response;
       });
     };
@@ -113,7 +100,7 @@ angular.module('hackoverflow.services', [])
     console.log('new comment: ', newComment);
     return $http({
       method: 'POST',
-      url: '/api/comments',
+      url: '/api/post/' + postId + '/comments',
       data: newComment
     });
   };
@@ -130,7 +117,7 @@ angular.module('hackoverflow.services', [])
   var deleteComment = function(commentId) {
     return $http({
       method: 'DELETE',
-      url: '/api/comments/commentId'
+      url: '/api/post/commentId'
     });
   };
 
@@ -142,7 +129,6 @@ angular.module('hackoverflow.services', [])
   };
 
   return {
-    getSampleComments: getSampleComments,
     getComments: getComments,
     createComment: createComment,
     // editComment: editComment,

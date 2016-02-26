@@ -31,7 +31,7 @@
   <div>
       <div class="comment" ng-repeat="comment in comments | filter:searchFor">
         <p ng-bind="comment.body"></p>
-        <p class="info"><span ng-bind="comment.userId"></span> -
+        <p class="info"><span ng-bind="comment.author"></span> -
 
           {{ TimeService.relativeDate(comment.timeStamp) }}
         </p>

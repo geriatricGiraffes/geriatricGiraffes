@@ -1,37 +1,35 @@
 
 var Post       = require('../posts/postModel.js');
-var Comment    = require('./commentModel.js')
+var Comment    = require('./commentModel.js');
 
 module.exports = {
 
-  // getComments : function ( request, response, next ) {
-  //   Post.comments.find(function(err, lesComments){
-  //     if (err) {
-  //       return response.send(err);
-  //     }
+  getComments : function ( request, response, next ) {
+    Comment.find({ 'post' : request.post._id }, function(err, lesComments){
+      if (err) {
+        return response.send(err);
+      }
+      response.json(lesComments);
+    });
+  },
 
-  //     response.json(lesComments);
-  //   });
-
-  // },
-  
-  newComment : function(req, res, next) {
-   var comment = new Comment(req.body);
-   comment.post = req.post;
+  newComment : function(request, response, next) {
+   var comment = new Comment(request.body);
+   comment.post = request.post;
    comment.author = 'anonymous';
-   comment.body = req.body.body;
+   comment.body = request.body.body;
    comment.save(function(err, comment) {
      if (err) { return next(err); }
-    
-     req.post.comments.push(comment);
-     req.post.save(function(err, post) {
+
+     request.post.comments.push(comment);
+     request.post.save(function(err, post) {
        if (err) { return next(err); }
-      
-       res.json(comment);
+
+       response.json(comment);
      });
    });
  }
- 
+
 
 
 
