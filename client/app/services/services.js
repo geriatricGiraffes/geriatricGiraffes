@@ -86,10 +86,19 @@ angular.module('hackoverflow.services', [])
       url: '/api/post/' + postId + '/comments'
     })
     .then(function(response) {
-      console.log(response);
       return response;
       });
     };
+
+  var getNumberOfComments = function(postId) {
+    return $http({
+      method: 'GET',
+      url: '/api/post/' + postId + '/commentsNumber'
+    })
+    .then(function(response) {
+      return response;
+    });
+  };
 
   var createComment = function(postId, body, author, created) {
     var newComment = {
@@ -131,6 +140,7 @@ angular.module('hackoverflow.services', [])
 
   return {
     getComments: getComments,
+    getNumberOfComments: getNumberOfComments,
     createComment: createComment,
     // editComment: editComment,
     deleteComment: deleteComment,

@@ -13,6 +13,16 @@ module.exports = {
     });
   },
 
+  getNumberOfComments: function(request, response, next) {
+    Comment.find({ 'post': request.post._id },
+      function(err, comments) {
+        if (err) {
+          return response.send(err);
+        }
+        response.json(comments.length);
+    });
+  },
+
   newComment : function(request, response, next) {
    var comment = new Comment(request.body);
    comment.post = request.post;
@@ -61,4 +71,3 @@ module.exports = {
 
 
 };
-
