@@ -86,7 +86,6 @@ angular.module('hackoverflow.services', [])
       url: '/api/post/' + postId + '/comments'
     })
     .then(function(response) {
-      console.log(response);
       return response;
       });
     };
@@ -97,7 +96,6 @@ angular.module('hackoverflow.services', [])
       url: '/api/post/' + postId + '/commentsNumber'
     })
     .then(function(response) {
-      console.log(response);
       return response;
     });
   };

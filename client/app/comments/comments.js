@@ -19,7 +19,6 @@ angular.module('hackoverflow.comments', [
 
   $scope.getComments = function getComments() {
     Comments.getComments($scope.post._id).then(function(data) {
-      console.log('###', data);
       $scope.comments = data.data;
     });
   };

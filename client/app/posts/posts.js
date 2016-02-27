@@ -18,7 +18,6 @@ angular.module('hackoverflow.posts', [
 
     // TODO: need to pass in forum to Posts.getPosts()
     Posts.getPosts('').then(function(data) {
-      console.log(data);
       $scope.posts = data.data;
 
       // this creates an object $scope.numberOfComments that
