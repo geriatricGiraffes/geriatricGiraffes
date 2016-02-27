@@ -6,10 +6,11 @@ angular.module('hackoverflow.posts', [
 .config(function($httpProvider, $urlRouterProvider, $stateProvider) {
 })
 
-.controller('PostsController', function($scope, $stateParams, $state, Posts, TimeService) {
+.controller('PostsController', function($scope, $stateParams, $state, Posts, Comments, TimeService) {
 
   $scope.posts = [];
   $scope.forums = [];
+  $scope.numberOfComments = {};
   $scope.forum = 'Angular';
   $scope.TimeService = TimeService;
 
@@ -19,6 +20,14 @@ angular.module('hackoverflow.posts', [
     Posts.getPosts('').then(function(data) {
       console.log(data);
       $scope.posts = data.data;
+
+      // this creates an object $scope.numberOfComments that
+      // keeps track of each posts number of comments. not
+      // ideal, but works. need to refactor how we go
+      // about determining the number of comments.
+      for (var i = 0; i < $scope.posts.length; i++) {
+        $scope.posts[i].numberOfComments = $scope.getNumberOfComments($scope.posts[i]._id);
+      }
     });
   };
 
@@ -31,6 +40,12 @@ angular.module('hackoverflow.posts', [
   $scope.switchForum = function switchForum(forum) {
     $scope.forum = forum;
     $scope.getForums();
+  };
+
+  $scope.getNumberOfComments = function getNumberOfComments(postId) {
+    Comments.getNumberOfComments(postId).then(function(data) {
+      $scope.numberOfComments[postId] = data.data;
+    });
   };
 
   $scope.getPosts($scope.forum);
