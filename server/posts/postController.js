@@ -84,7 +84,7 @@ module.exports = {
  },
 
  getPostForum : function ( request, response, next ) {
-  Post.find({}).select({ forum: request.body.post.forum })
+  Post.find({}).select({ forum: request.body.post.forum });
  }
 
 };

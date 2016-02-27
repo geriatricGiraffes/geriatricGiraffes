@@ -35,5 +35,5 @@ app.param('comment', function (req, res, next, id) {
     app.get('/:post', postController.getPost);
     app.put('/:post', postController.editPost);
     app.delete('/:post', postController.deletePost);
-    app.get('/:forum', postController.getPostForum);
+    // app.get('/:forum', postController.getPostForum);
 };
