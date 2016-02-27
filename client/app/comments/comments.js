@@ -14,7 +14,7 @@ angular.module('hackoverflow.comments', [
   $scope.post = $stateParams.post;
   $scope.comment = $stateParams.comment;
   $scope.newCommentBody = '';
-  $scope.author = 'Anonymous';
+  $scope.theUser = $rootScope.user;
   $scope.TimeService = TimeService;
 
   $scope.getComments = function getComments() {
