@@ -17,12 +17,25 @@ angular.module('hackoverflow.services', [])
   var getPosts = function(forum) {
     return $http({
       method: 'GET',
-      url: '/api/post/' + forum,
+      url: '/api/post'
     })
     .then(function ( response ){
       return response;
       });
     };
+
+// UNCOMMENT FOR FORUMS
+
+  // var getForumPosts = function(forum) {
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/api/post/' + forum
+  //   })
+  //   .then(function ( response ){
+  //     return response;
+  //     });
+  //   };
+
 
   var createPost = function(title, body, forum, author, created) {
     var newPost = {
