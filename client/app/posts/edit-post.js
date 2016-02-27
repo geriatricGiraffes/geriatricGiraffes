@@ -29,7 +29,7 @@ angular.module('hackoverflow.edit-post', [
 
     Posts.editPost($scope.postId, $scope.title,
       $scope.body, $scope.forum, $scope.author, new Date());
-    $state.go('posts');
+    $state.go('posts', { 'forum': $scope.forum });
   };
 
   $scope.getForums();
