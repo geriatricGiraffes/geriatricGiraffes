@@ -15,6 +15,9 @@ angular.module('hackoverflow', [
   // until github authentication is implemented
   if (!$rootScope.user) {
     $rootScope.user = prompt('What is your name?');
+    if (!$rootScope.user) {
+      $rootScope.user = 'Anonymous';
+    }
   }
 })
 

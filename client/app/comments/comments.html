@@ -6,26 +6,23 @@
 
   <div class="comments-post">
 
-    <!-- TODO: need to get post's forum from db  -->
-    <span class="post-forum">Angular /</span>
-
+    <span class="post-forum">{{ post.forum }} /</span>
     <h2 ng-bind="post.title"></h2>
     <p ng-bind="post.body"></p>
 
-    <!-- TODO: need to get number of comments from db -->
     <p class="info">
       <span ng-bind="post.author"></span> -
       {{ TimeService.relativeDate(post.created) }}
-      <span class="num-comments"> 13 Comments</span>
+      <span class="num-comments"> {{ post.comments.length }} Comment{{ + comments.length !== 1 ? 's' : '' }}</span>
     </p>
 
-    <!-- TODO: This only shows up for post author  -->
-    <a ui-sref="edit-post({ post: post })">
-      <span class="edit-delete">EDIT<span>
-    </a> /
-    <span ng-click="deletePost(post._id)" class="edit-delete">DELETE</span>
+    <div ng-if="theUser === post.author">
+      <a ui-sref="edit-post({ post: post })">
+        <span class="edit-delete">EDIT<span>
+        </a> /
+        <span ng-click="deletePost(post._id)" class="edit-delete">DELETE</span>
+    </div>
     <br /><br />
-
   </div>
 
   <div>
@@ -36,8 +33,9 @@
           {{ TimeService.relativeDate(comment.created) }}
         </p>
 
-        <!-- TODO: This only shows up for comment author  -->
-        <span class="edit-delete" ng-click="deleteComment(post._id, comment._id)">DELETE</span>
+        <div ng-if="theUser === comment.author">
+          <span class="edit-delete" ng-click="deleteComment(post._id, comment._id)">DELETE</span>
+        </div>
 
       </div>
   </div>
