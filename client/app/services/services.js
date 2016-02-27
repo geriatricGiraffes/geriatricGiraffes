@@ -17,7 +17,7 @@ angular.module('hackoverflow.services', [])
   var getPosts = function(forum) {
     return $http({
       method: 'GET',
-      url: '/api/post/' + forum,
+      url: '/api/post/' + forum
     })
     .then(function ( response ){
       return response;
@@ -203,4 +203,29 @@ angular.module('hackoverflow.services', [])
     relativeDate: relativeDate
   };
 
-});
+})
+
+.factory('ForumService', ['$rootScope', function ($rootScope) {
+
+  var currentForum = {
+
+    model: {
+      forum: 'Algorithms'
+    },
+
+    SaveState: function () {
+      sessionStorage.ForumService = angular.toJson(currentForum.model);
+    },
+
+    RestoreState: function () {
+      currentForum.model = angular.fromJson(sessionStorage.ForumService);
+    }
+  };
+
+  $rootScope.$on("savestate", currentForum.SaveState);
+  $rootScope.$on("restorestate", currentForum.RestoreState);
+
+  return {
+    currentForum: currentForum
+  };
+}]);

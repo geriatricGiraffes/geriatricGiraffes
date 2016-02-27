@@ -6,12 +6,12 @@ angular.module('hackoverflow.posts', [
 .config(function($httpProvider, $urlRouterProvider, $stateProvider) {
 })
 
-.controller('PostsController', function($scope, $stateParams, $state, Posts, Comments, TimeService) {
+.controller('PostsController', function($scope, $stateParams, $state, Posts, Comments, TimeService, ForumService) {
 
   $scope.posts = [];
   $scope.forums = [];
   $scope.numberOfComments = {};
-  $scope.forum = 'Angular';
+  $scope.forum = ForumService.currentForum.model.forum;
   $scope.TimeService = TimeService;
 
   $scope.getPosts = function getPosts(forum) {
@@ -38,6 +38,7 @@ angular.module('hackoverflow.posts', [
 
   $scope.switchForum = function switchForum(forum) {
     $scope.forum = forum;
+    ForumService.currentForum.model.forum = forum;
     $scope.getForums();
   };
 

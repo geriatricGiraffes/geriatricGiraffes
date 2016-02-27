@@ -19,6 +19,22 @@ angular.module('hackoverflow', [
       $rootScope.user = 'Anonymous';
     }
   }
+
+  $rootScope.$on("$routeChangeStart",
+    function (event, next, current) {
+
+    if (sessionStorage.restorestate == "true") {
+
+      //let everything know we need to restore state
+      $rootScope.$broadcast('restorestate');
+      sessionStorage.restorestate = false;
+    }
+  });
+
+  //let everthing know that we need to save state now.
+  window.onbeforeunload = function (event) {
+    $rootScope.$broadcast('savestate');
+  };
 })
 
 .controller('AppController', function($scope, $location) {
@@ -36,6 +52,7 @@ angular.module('hackoverflow', [
   $urlRouterProvider.otherwise('posts');
   $stateProvider
     .state('posts', {
+      params: {'forum': 'Angular'},
       url: '/',
       templateUrl: 'app/posts/posts.html',
       controller: 'PostsController'
