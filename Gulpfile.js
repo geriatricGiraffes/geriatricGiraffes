@@ -30,7 +30,7 @@ gulp.task('start', ['serve'],function () {
 });
 
 // start our node server using nodemon
-gulp.task('serve', function() {
+gulp.task('serve', function () {
   nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});
 });
 

@@ -14,7 +14,7 @@ module.exports = {
           next(new Error('User does not exist'));
         } else {
           return user.comparePasswords(password)
-            .then(function(foundUser) {
+            .then(function (foundUser) {
               if (foundUser) {
                 var tokekn = jwt.encode(user, 'secret');
                 response.json({token: token});
@@ -37,7 +37,7 @@ module.exports = {
 
     var findOne = Q.nbind(User.findOne, User);
 
-    findOne({username: username})
+    findOne({ username: username })
       .then(function (user) {
         if (user) {
           next( new Error('User already exists'));
@@ -73,7 +73,7 @@ module.exports = {
       var user = jwt.decode(token, 'secret');
       var findUser = Q.nbind(User.findOne, User);
       findUser({username: user.username})
-        .then(function( foundUser) {
+        .then(function (foundUser) {
           if (foundUser) {
             response.send(200);
           } else {
