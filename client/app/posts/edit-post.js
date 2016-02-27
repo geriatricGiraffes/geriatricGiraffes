@@ -3,12 +3,10 @@ angular.module('hackoverflow.edit-post', [
   'ui.router'
 ])
 
-.config(function($stateProvider) {
+.config(function ($stateProvider) {
 })
 
-.controller('EditPostController', function($scope, $state,
-  $stateParams, Posts) {
-
+.controller('EditPostController', function ($scope, $state, $stateParams, Posts) {
   $scope.forums = [];
   $scope.forum = 'Please choose a forum';
   $scope.post = $stateParams.post;
@@ -26,7 +24,6 @@ angular.module('hackoverflow.edit-post', [
   };
 
   $scope.submit = function() {
-
     Posts.editPost($scope.postId, $scope.title,
       $scope.body, $scope.forum, $scope.author, new Date());
     $state.go('posts', { 'forum': $scope.forum });
