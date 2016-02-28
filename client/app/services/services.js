@@ -1,29 +1,30 @@
 angular.module('hackoverflow.services', [])
 
-// POSTS FACTORY
-.factory('Posts', function ($http) {
+// POSTS
+
+.factory('Posts', function($http) {
 
   var getForums = function() {
     return $http({
       method: 'GET',
       url: 'app/config/forums.json'
     })
-    .then(function (response) {
+    .then(function ( response ){
       return response;
     });
   };
 
-  var getPosts = function (forum) {
+  var getPosts = function(forum) {
     return $http({
       method: 'GET',
       url: '/api/post/' + forum
     })
-    .then(function (response){
+    .then(function ( response ){
       return response;
       });
     };
 
-  var createPost = function (title, body, forum, author, created) {
+  var createPost = function(title, body, forum, author, created) {
     var newPost = {
       title: title,
       body: body,
@@ -31,9 +32,7 @@ angular.module('hackoverflow.services', [])
       author: author,
       created: created
     };
-
     console.log('create post: ', newPost);
-    
     return $http({
       method: 'POST',
       url: '/api/post',
@@ -41,7 +40,8 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var editPost = function (postId, title, body, forum, author, created) {
+  var editPost = function(postId, title, body,
+    forum, author, created) {
     var editedPost = {
       postId: postId,
       title: title,
@@ -50,9 +50,7 @@ angular.module('hackoverflow.services', [])
       author: author,
       created: created
     };
-
     console.log('edited post: ', editedPost);
-   
     return $http({
       method: 'PUT',
       url: '/api/post/' + postId,
@@ -60,9 +58,8 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  var deletePost = function (postId) {
+  var deletePost = function(postId) {
     console.log(postId + ' is for deleting');
-   
     return $http({
       method: 'DELETE',
       url: '/api/post/' + postId
@@ -78,39 +75,39 @@ angular.module('hackoverflow.services', [])
   };
 })
 
-// COMMENTS FACTORY
-.factory('Comments', function ($http) {
-  var getComments = function (postId) {
-    console.log(postId + ' is postId');
+// COMMENTS
+
+.factory('Comments', function ( $http ) {
+
+  var getComments = function(postId) {
+    console.log(postId + " is postId");
     return $http({
       method: 'GET',
       url: '/api/post/' + postId + '/comments'
     })
-    .then(function (response) {
+    .then(function(response) {
       return response;
       });
     };
 
-  var getNumberOfComments = function (postId) {
+  var getNumberOfComments = function(postId) {
     return $http({
       method: 'GET',
       url: '/api/post/' + postId + '/commentsNumber'
     })
-    .then(function (response) {
+    .then(function(response) {
       return response;
     });
   };
 
-  var createComment = function (postId, body, author, created) {
+  var createComment = function(postId, body, author, created) {
     var newComment = {
       postId: postId,
       body: body,
       author: author,
       created: created
     };
-   
     console.log('new comment: ', newComment);
-   
     return $http({
       method: 'POST',
       url: '/api/post/' + postId + '/comments',
@@ -118,7 +115,7 @@ angular.module('hackoverflow.services', [])
     });
   };
 
-  // TODO: Edit Comments 
+  // no edit comments for now. v2.
   // var editComment = function(commentId) {
   //   return $http({
   //     method: 'PUT',
@@ -127,78 +124,44 @@ angular.module('hackoverflow.services', [])
   //   });
   // };
 
-  var deleteComment = function (postId, commentId) {
+  var deleteComment = function(postId, commentId) {
     return $http({
       method: 'DELETE',
       url: '/api/post/' + postId + '/comments/' + commentId
     });
   };
 
-  // TODO: Get Number Comments
-  // var getNumberComments = function(postId) {
-  //   // It would be nice to get the # of comments for a given
-  //   // post.  Calculating this data for each
-  //   // post on the front end would be unnecessarily
-  //   // time complexive.
-  // };
-
   return {
     getComments: getComments,
-    getNumberOfComments: getNumberOfComments,
     createComment: createComment,
     // editComment: editComment,
-    deleteComment: deleteComment,
-    getNumberComments: getNumberComments
+    deleteComment: deleteComment
   };
 
 })
 
-// AUTHENTICATION 
-// TODO: Not yet connected
-// .factory('Auth', function($http, $location, $window) {
+// AUTHENTICATION
 
-//   var signin = function(user) {
-//     return $http ({
-//       method: 'POST',
-//       url: '/api/users/signin',
-//       data: user
-//     })
-//     .then(function(response) {
-//       return response.data.token;
-//     });
-//   };
+.factory('Auth', function($http, $location, $window) {
 
-//   var signup = function(user) {
-//     return $http({
-//       method: 'POST',
-//       url: '/api/users/signup',
-//       data: user
-//     })
-//     .then(function ( response ) {
-//       return response.data.token;
-//     });
-//   };
+  var getUser = function getUser() {
+    return $http({
+      method: 'GET',
+      url: '/api/me/'
+    })
+    .then(function ( response ){
+      return response;
+      });
+    };
 
-//   var isAuth = function() {
-//     return !!$window.localStorage.getItem('someToken');
-//   };
+  return {
+    getUser: getUser
+  };
+})
 
-//   var signout = function() {
-//     $window.localStorage.removeItem('someToken');
-//     $location.path('/signin');
-//   };
+.factory('TimeService', function() {
 
-//   return {
-//     singin: signin,
-//     signup: signup,
-//     isAuth: isAuth,
-//     signout: signout
-//   };
-
-// })
-
-.factory('TimeService', function () {
-  var relativeDate = function (date) {
+  var relativeDate = function(date) {
     return moment(date).fromNow();
   };
 
@@ -209,6 +172,7 @@ angular.module('hackoverflow.services', [])
 })
 
 .factory('ForumService', ['$rootScope', function ($rootScope) {
+
   var currentForum = {
 
     model: {

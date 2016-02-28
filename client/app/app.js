@@ -6,50 +6,51 @@ angular.module('hackoverflow', [
   'hackoverflow.comments',
   'ui.router',
   'ngRoute',
-  'ngSanitize'
+  'ngSanitize',
+  'satellizer',
+  'hackoverflow.auth'
 ])
 
-.run(function ($rootScope) {
+.run(function($rootScope, $auth) {
 
-  // this global user variable is a stopgap measure
-  // until github authentication is implemented
-  if (!$rootScope.user) {
-    $rootScope.user = prompt('What is your name?');
-    if (!$rootScope.user) {
-      $rootScope.user = 'Anonymous';
-    }
-  }
-
-  $rootScope.$on('$routeChangeStart',
+  $rootScope.$on("$routeChangeStart",
     function (event, next, current) {
-    if (sessionStorage.restorestate == 'true') {
+
+    if (sessionStorage.restorestate == "true") {
+
       //let everything know we need to restore state
       $rootScope.$broadcast('restorestate');
       sessionStorage.restorestate = false;
     }
   });
 
-  //let everthing know that we need to save state now
+  //let everthing know that we need to save state now.
   window.onbeforeunload = function (event) {
     $rootScope.$broadcast('savestate');
   };
 })
 
-.controller('AppController', function ($scope, $location) {
+.controller('AppController', function($scope, $location, $auth) {
+
   // this ensures that application fully reboots and
   // defaults to main page if user reloads a page.
-  $location.path('/');
+  $location.path("/");
 })
 
-.config(function ($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider) {
+.config(function($httpProvider, $urlRouterProvider,
+  $stateProvider, $locationProvider, $authProvider) {
+
+  $authProvider.github({
+    clientId: 'b09b1334afed657344e5'
+  });
 
   $locationProvider.html5Mode(true);
-  $urlRouterProvider.otherwise('posts');
-  
+
+  $urlRouterProvider.otherwise('signin');
   $stateProvider
     .state('posts', {
-      params: { 'forum': 'Angular' },
-      url: '/',
+      params: {'forum': 'Angular'},
+      // url: '/',
       templateUrl: 'app/posts/posts.html',
       controller: 'PostsController'
     })
@@ -59,19 +60,19 @@ angular.module('hackoverflow', [
       controller: 'AddPostController'
     })
     .state('edit-post', {
-      params: { 'post': null },
+      params: {'post': null},
       // url: '/edit-post',
       templateUrl: 'app/posts/add-post.html',
       controller: 'EditPostController'
     })
     .state('comments', {
-      params: { 'post': null },
+      params: {'post': null},
       // url: '/comments',
       templateUrl: 'app/comments/comments.html',
       controller: 'CommentsController'
     })
     .state('signin', {
-      // url: '/signin',
+      url: '/',
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
