@@ -12,21 +12,22 @@ mongoose.connect(dbURI);
 
 /* ===============================================
    DB Event Handlers
-    ===============================================
+   ===============================================
  */
 
  // logs a connection
- mongoose.connection.on('connected', function() {
+ mongoose.connection.on('connected', function () {
    console.log('Mongoose connected to ' + dbURI);
  });
+ 
  // logs when disconnected
- mongoose.connection.on('disconnected', function() {
+ mongoose.connection.on('disconnected', function () {
    console.log('Mongoose disconnected');
  });
 
  // logs when user terminates app
- process.on('SIGINIT', function() {
-   mongoose.connection.close(function() {
+ process.on('SIGINIT', function () {
+   mongoose.connection.close(function () {
      console.log('Mongoose disconnected through app termination');
      process.exit(0);
    });
@@ -51,10 +52,7 @@ module.exports = app;
 
 
 // Comments from Angular Server file.
-
-
 /* Walkthrough of the server
-
   Express, mongoose, and our server are initialzed here
   Next, we then inject our server and express into our config/middleware.js file for setup.
     We also exported our server for easy testing

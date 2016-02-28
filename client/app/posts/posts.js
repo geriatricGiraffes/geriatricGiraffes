@@ -3,11 +3,10 @@ angular.module('hackoverflow.posts', [
   'ui.router'
 ])
 
-.config(function($httpProvider, $urlRouterProvider, $stateProvider) {
+.config(function ($httpProvider, $urlRouterProvider, $stateProvider) {
 })
 
-.controller('PostsController', function($scope, $stateParams, $state, Posts, Comments, TimeService, ForumService) {
-
+.controller('PostsController', function ($scope, $stateParams, $state, Posts, Comments, TimeService, ForumService) {
   $scope.posts = [];
   $scope.forums = [];
   $scope.numberOfComments = {};
@@ -15,11 +14,9 @@ angular.module('hackoverflow.posts', [
   $scope.TimeService = TimeService;
 
   $scope.getPosts = function getPosts(forum) {
-
     // TODO: need to pass in forum to Posts.getPosts()
-    Posts.getPosts('').then(function(data) {
+    Posts.getPosts('').then(function (data) {
       $scope.posts = data.data;
-
       // this creates an object $scope.numberOfComments that
       // keeps track of each posts number of comments. not
       // ideal, but works. need to refactor how we go
@@ -31,7 +28,7 @@ angular.module('hackoverflow.posts', [
   };
 
   $scope.getForums = function getForums(forum) {
-    Posts.getForums().then(function(data) {
+    Posts.getForums().then(function (data) {
       $scope.forums = data.data.sort();
     });
   };
@@ -43,7 +40,7 @@ angular.module('hackoverflow.posts', [
   };
 
   $scope.getNumberOfComments = function getNumberOfComments(postId) {
-    Comments.getNumberOfComments(postId).then(function(data) {
+    Comments.getNumberOfComments(postId).then(function (data) {
       $scope.numberOfComments[postId] = data.data;
     });
   };

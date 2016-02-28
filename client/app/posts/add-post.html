@@ -2,12 +2,14 @@
 
   <form name="addPostForm"
         ng-submit="submit()">
+
     <div class="add-post">
 
       <input    ng-model="title"
                 class="boxsizingBorder"
                 required
-                placeholder="Ask your question" />
+                placeholder="Ask your question"/>
+
       <textarea ng-model="body"
                 class="boxsizingBorder"
                 required
@@ -16,14 +18,14 @@
       <select   ng-model="forum"
                 ng-init="somethingHere = options[0]"
                 ng-options="forum for forum in forums"></select>
-
+                
       <button   type="submit"
                 ng-disabled="addPostForm.$invalid"
                 ng-Class="(title && body && forum !== 'Please choose a forum') ?
                 'buttonEnabled' : 'buttonDisabled'">
                 Ask a Quesiton</button>
-
     </div>
+
   </form>
 
 </div>

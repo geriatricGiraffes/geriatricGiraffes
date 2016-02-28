@@ -20,7 +20,7 @@ var GitHubStrategy = require('passport-github2');
 
 /* From documentation, how to configure middleware.  If you want persistant login sessions, then you need the 
 express.session() and passport.session() */
-app.configure(function() {
+app.configure(function () {
   app.use(express.static('public'));
   app.use(express.cookieParser());
   app.use(express.bodyParser());
@@ -33,13 +33,13 @@ app.configure(function() {
 
 /* After a session is established, a cookie is stored in the browers.
 These serialize and deserialize functions keep track for user instances as they start and finish sessions. */
-passport.serializeUser(function(user, done){
+passport.serializeUser(function (user, done) {
     done(null, user.id);
 });
 
 
-passport.deserializeUser(function(id, done){
-  User.findById(id, function(err, user){
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
     if(!err){
       done(err, user);
     } else {
@@ -70,7 +70,7 @@ passport.use(new GitHubStrategy({
           name:
           created: Date.now()
         });
-        user.save(function(err){
+        user.save(function (err) {
           if(err){
             console.log(err);
           } else {
@@ -95,19 +95,22 @@ app.get('/auth/github',
 // If not authorized, redirected to login.  
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
-  function(req, res) {
+  function (req, res) {
     res.redirect('/posts');
 });
 
-app.get('/logout', function(req, res){
+app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
 
 
 // Same route middleware to redirect users who are not authenticated to the login page.
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+function ensureAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) { 
+    return next(); 
+  }
+  
   res.redirect('/login');
 }
 

@@ -1,6 +1,3 @@
-// app/models/post.js
-
-
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({
@@ -19,9 +16,9 @@ var PostSchema = new mongoose.Schema({
 			type: Date,
 			default: Date.now
 		}
-
-	}]  // The ref option is what tells Mongoose which model to use during population
+	}]  
 });
+
 module.exports = mongoose.model('Post', PostSchema);
 
 

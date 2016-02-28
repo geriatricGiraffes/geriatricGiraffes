@@ -1,8 +1,8 @@
-var morgan = require('morgan'), //used for logging incoming request
-  bodyParser = require('body-parser'),
-  helpers = require ('./helpers.js');
+var morgan = require('morgan'); //used for logging incoming request
+var bodyParser = require('body-parser');
+var helpers = require ('./helpers.js');
 
-module.exports = function ( app, express ) {
+module.exports = function (app, express) {
   var userRouter = express.Router();
   var commentRouter = express.Router();
   var postRouter = express.Router();
@@ -17,7 +17,7 @@ module.exports = function ( app, express ) {
   app.use('/api/post', commentRouter); // use commentRouter for all use comment requests
 
   // authentication middleware used to decode token and made available on the request
-// app.use('someroute/someroute', helpers.decode);
+  // app.use('someroute/someroute', helpers.decode);
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 

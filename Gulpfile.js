@@ -19,7 +19,7 @@ var paths = {
 // any changes made to your
 // client side code will automagically refresh your page
 // with the new changes
-gulp.task('start', ['serve'],function () {
+gulp.task('start', ['serve'], function () {
   bs({
     notify: true,
     // address for server,
@@ -30,7 +30,7 @@ gulp.task('start', ['serve'],function () {
 });
 
 // start our node server using nodemon
-gulp.task('serve', function() {
+gulp.task('serve', function () {
   nodemon({script: './server/server.js', ignore: 'node_modules/**/*.js'});
 });
 

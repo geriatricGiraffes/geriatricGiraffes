@@ -9,7 +9,7 @@ angular.module('hackoverflow', [
   'ngSanitize'
 ])
 
-.run(function($rootScope) {
+.run(function ($rootScope) {
 
   // this global user variable is a stopgap measure
   // until github authentication is implemented
@@ -20,39 +20,35 @@ angular.module('hackoverflow', [
     }
   }
 
-  $rootScope.$on("$routeChangeStart",
+  $rootScope.$on('$routeChangeStart',
     function (event, next, current) {
-
-    if (sessionStorage.restorestate == "true") {
-
+    if (sessionStorage.restorestate == 'true') {
       //let everything know we need to restore state
       $rootScope.$broadcast('restorestate');
       sessionStorage.restorestate = false;
     }
   });
 
-  //let everthing know that we need to save state now.
+  //let everthing know that we need to save state now
   window.onbeforeunload = function (event) {
     $rootScope.$broadcast('savestate');
   };
 })
 
-.controller('AppController', function($scope, $location) {
-
+.controller('AppController', function ($scope, $location) {
   // this ensures that application fully reboots and
   // defaults to main page if user reloads a page.
-  $location.path("/");
+  $location.path('/');
 })
 
-.config(function($httpProvider, $urlRouterProvider,
-  $stateProvider, $locationProvider) {
+.config(function ($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
-
   $urlRouterProvider.otherwise('posts');
+  
   $stateProvider
     .state('posts', {
-      params: {'forum': 'Angular'},
+      params: { 'forum': 'Angular' },
       url: '/',
       templateUrl: 'app/posts/posts.html',
       controller: 'PostsController'
@@ -63,13 +59,13 @@ angular.module('hackoverflow', [
       controller: 'AddPostController'
     })
     .state('edit-post', {
-      params: {'post': null},
+      params: { 'post': null },
       // url: '/edit-post',
       templateUrl: 'app/posts/add-post.html',
       controller: 'EditPostController'
     })
     .state('comments', {
-      params: {'post': null},
+      params: { 'post': null },
       // url: '/comments',
       templateUrl: 'app/comments/comments.html',
       controller: 'CommentsController'

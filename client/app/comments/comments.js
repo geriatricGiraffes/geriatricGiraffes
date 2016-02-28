@@ -3,13 +3,12 @@ angular.module('hackoverflow.comments', [
   'ui.router'
 ])
 
-.config(function($httpProvider, $urlRouterProvider, $stateProvider) {
+.config(function ($httpProvider, $urlRouterProvider, $stateProvider) {
 })
 
 .controller('CommentsController',
-  function($scope, $rootScope, $stateParams, $state, Comments,
+  function ($scope, $rootScope, $stateParams, $state, Comments,
     Posts, TimeService) {
-
   $scope.comments = [];
   $scope.post = $stateParams.post;
   $scope.comment = $stateParams.comment;
@@ -33,8 +32,7 @@ angular.module('hackoverflow.comments', [
     $state.go('posts');
   };
 
-  $scope.submit = function() {
-
+  $scope.submit = function () {
     Comments.createComment($scope.post._id, $scope.newCommentBody, $rootScope.user, new Date());
     $scope.newCommentBody = '';
     $scope.getComments();
