@@ -1,3 +1,5 @@
+<div ng-include="'app/header.html'"></div>
+
 <div id="add-post-container">
 
   <form name="addPostForm"
@@ -12,7 +14,6 @@
 
       <textarea ng-model="body"
                 class="boxsizingBorder"
-                required
                 placeholder="Feel free to elaborate"></textarea>
 
       <select   ng-model="forum"
@@ -21,7 +22,7 @@
                 
       <button   type="submit"
                 ng-disabled="addPostForm.$invalid"
-                ng-Class="(title && body && forum !== 'Please choose a forum') ?
+                ng-Class="(title && forum !== 'Please choose a forum') ?
                 'buttonEnabled' : 'buttonDisabled'">
                 Ask a Quesiton</button>
     </div>

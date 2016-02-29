@@ -1,3 +1,5 @@
+<div ng-include="'app/header.html'"></div>
+
 <div id="posts-container">
 
   <div class="posts" ng-repeat="post in posts |
@@ -5,22 +7,21 @@
     filter: searchFor |
     filter: { forum: forum }">
 
-    <a ui-sref="comments({ post: post })">
+    <a ui-sref="comments({post: post})">
       <h2 ng-bind="post.title"></h2></a>
       <p>
         <span ng-bind="post.author"></span> -
         {{ TimeService.relativeDate(post.created) }}
-        <span class="num-comments">{{ numberOfComments[post._id] }} Comment {{ + numberOfComments[post._id] !== 1 ? 's' : '' }}</span>
+        <span class="num-comments"> {{ numberOfComments[post._id] }} Comment{{ + numberOfComments[post._id] !== 1 ? 's' : '' }}</span>
       </p>
   </div>
 
   <div class="sidebar">
-
     <div class="search">
       <input ng-model="searchFor" placeholder="Search" />
     </div>
-  
-    <br/>
+
+    <br />
 
     <div class="forum">
       {{ forum }}
@@ -33,5 +34,4 @@
     </div>
 
   </div>
-
 </div>
