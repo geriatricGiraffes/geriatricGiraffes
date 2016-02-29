@@ -134,6 +134,7 @@ angular.module('hackoverflow.services', [])
   return {
     getComments: getComments,
     createComment: createComment,
+    getNumberOfComments: getNumberOfComments,
     // editComment: editComment,
     deleteComment: deleteComment
   };
