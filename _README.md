@@ -1,6 +1,6 @@
-# Project Name
+# Hack Overflow
 
-> Pithy project description
+> A technical forum for the Hack Reactor Remote Community to share their expertise
 
 ## Team
 
@@ -20,15 +20,12 @@
 
 ## Usage
 
-> Some usage instructions
+> Once the app is deployed (or run locally), users should be able to sign in with their GitHub accounts.  They can ask a question in a specific forum, or comment on someone else's question.
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node ^4.0.0 
+
 
 ## Development
 
@@ -40,6 +37,14 @@ From within the root directory:
 sudo npm install -g bower
 npm install
 bower install
+gulp
+```
+
+Note: You may need to individually install the following modules: moment and colors
+```sh
+npm install moment
+bower install --save moment
+npm install colors
 ```
 
 ### Roadmap

@@ -31,8 +31,10 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "colors": "1.1.2",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
+    "moment": "^2.0.0",
     "mongoose": "^4.3.0",
     "morgan": "^1.1.1",
     "passport": "^0.2.0",
